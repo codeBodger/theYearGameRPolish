@@ -68,9 +68,6 @@ v3l .req x22
 v4l .req x23
 v5l .req x24
 v6l .req x25
-v7l .req x26
-v8l .req x27
-v9l .req x28
 
 # 32 bit variable (callee-saved) registers
 v0i .req w19
@@ -80,9 +77,11 @@ v3i .req w22
 v4i .req w23
 v5i .req w24
 v6i .req w25
-v7i .req w26
-v8i .req w27
-v9i .req w28
+
+# link register backups
+digitOrderLR .req x28
+holPatternLR .req x27
+binOpOrderLR .req x26
 
 
 # floating point registers
