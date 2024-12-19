@@ -14,12 +14,12 @@ int dfactArr[DFACTARR_SIZE];
 //     );
 // }
 
-#define abs(reg) __asm__(
-    "# Written as `#define abs(reg)` in funcs.c\n\t"
-    "# " reg "= abs(" reg "), uses t0i\n\t"
-    "eor t0i, " reg ", " reg " asr #31\n\t"
-    "sub " reg ", t0i , " reg " asr #31\n"
-);
+#define abs(reg) __asm__( \
+    "# Written as `#define abs(reg)` in funcs.c\n\t" \
+    "# " reg "= abs(" reg "), uses t0i\n\t" \
+    "eor t0i, " reg ", " reg " asr #31\n\t" \
+    "sub " reg ", t0i , " reg " asr #31\n" \
+)
 
 
 int isqrt(int v) {
