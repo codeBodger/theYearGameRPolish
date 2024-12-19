@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 #include "funcs.h"
 
 #define DIGIT1 2
