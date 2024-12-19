@@ -55,6 +55,41 @@ __asm__( ".global isqrt\nisqrt:\n\t"
     "ret\n"
 );
 
+__asm__( ".global fact\nfact:\n\t"
+    abs("p0i")
+
+    "# if (p0i >= FACTARR_SIZE) return 0\n\t"
+    "cmp p0i, #13\n\t"
+    "blt fact_good\n\t"
+    "mov r0i, #0\n\t"
+    "ret\n\n\t"
+
+    "# else return factArr[p0i]\n"
+"fact_good:\n\t"
+    "# t0l = factArr\n\t"
+    "ldr t0l, =factArr\n\t"
+    "# p0i = (int*)t1l[p0i]\n\t"
+    "ldr p0i, [t0l, p0i LSL #2]\n\t"
+    "ret\n\n\t"
+);
+
+__asm__( ".global dfact\ndfact:\n\t"
+    abs("p0i")
+
+    "# if (p0i >= DFACTARR_SIZE) return 0\n\t"
+    "cmp p0i, #20\n\t"
+    "blt dfact_good\n\t"
+    "mov r0i, #0\n\t"
+    "ret\n\n\t"
+
+    "# else return dfactArr[p0i]\n"
+"dfact_good:\n\t"
+    "# t0l = dfactArr\n\t"
+    "ldr t0l, =dfactArr\n\t"
+    "# p0i = (int*)t1l[p0i]\n\t"
+    "ldr p0i, [t0l, p0i LSL #2]\n\t"
+    "ret\n\n\t"
+);
 
 #define MAX_SQUAREABLE 0xB504
 void initSqrt() {
