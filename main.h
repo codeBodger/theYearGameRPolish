@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <signal.h>
 
 #include "funcs.h"
 
