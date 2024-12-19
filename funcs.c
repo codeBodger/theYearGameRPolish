@@ -14,7 +14,7 @@ int dfactArr[DFACTARR_SIZE];
 //     );
 // }
 
-__asm__("\n.text\n\n");
+__asm__(".text\n");
 
 #define abs(reg) \
     "# Written as `#define abs(reg)` in funcs.c\n\t" \
@@ -47,7 +47,9 @@ __asm__( ".global isqrt\nisqrt:\n\t"
     "cmp t0i, p0i\n\t"
     "beq isqrt_good\n\t"
     "mov r0i, #0\n\t"
-    "ret\n\n"
+    "ret\n\n\t"
+
+    "# else\n"
 "isqrt_good:\n\t"
     "move r0i, t1i\n\t"
     "ret\n"
