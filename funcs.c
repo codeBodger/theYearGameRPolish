@@ -98,16 +98,19 @@ __asm__( ".global dfact\ndfact:\n\t"
 void initSqrt() {
     for (int i = 0; i < MAX_SQUAREABLE; i++)
         sqrtArr[i*i % SQRTARR_SIZE] = i;
+    __asm__("ldr rtArr, =sqrtArr\n");
 }
 
 void initFact() {
     factArr[0] = 1;
     for (int i = 1; i < FACTARR_SIZE; i++)
         factArr[i] = factArr[i-1] * i;
+    __asm__("ldr fcArr, =factArr\n");
 }
 
 void initDfact() {
     dfactArr[0] = dfactArr[1] = 1;
     for (int i = 2; i < DFACTARR_SIZE; i++)
         dfactArr[i] = dfactArr[i-2] * i;
+    __asm__("ldr dfArr, =dfactArr\n");
 }

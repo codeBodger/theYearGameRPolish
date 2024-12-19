@@ -1,3 +1,5 @@
+.include "named_registers.has"
+
 # integer registers
 # integer parameter/result registers
 # 64 bit parameter registers
@@ -5,363 +7,71 @@ p0l .req x0
 p1l .req x1
 p2l .req x2
 p3l .req x3
-p4l .req x4
-p5l .req x5
-p6l .req x6
-p7l .req x7
 
 # 32 bit parameter registers
 p0i .req w0
 p1i .req w1
 p2i .req w2
 p3i .req w3
-p4i .req w4
-p5i .req w5
-p6i .req w6
-p7i .req w7
 
 # 64 bit result registers
 r0l .req x0
 r1l .req x1
 r2l .req x2
 r3l .req x3
-r4l .req x4
-r5l .req x5
-r6l .req x6
-r7l .req x7
 
 # 32 bit result registers
 r0i .req w0
 r1i .req w1
 r2i .req w2
 r3i .req w3
-r4i .req w4
-r5i .req w5
-r6i .req w6
-r7i .req w7
 
 # integer temporary registers
 # 64 bit temporary registers
-t0l .req x9
-t1l .req x10
-t2l .req x11
-t3l .req x12
-t4l .req x13
-t5l .req x14
-t6l .req x15
+t0l .req x4
+t1l .req x5
+t2l .req x6
+t3l .req x7
+t4l .req x8
+t5l .req x9
+t6l .req x10
+t7l .req x11
+t8l .req x12
+t9l .req x13
+tal .req x14
+tbl .req x15
 
 # 32 bit temporary registers
-t0i .req w9
-t1i .req w10
-t2i .req w11
-t3i .req w12
-t4i .req w13
-t5i .req w14
-t6i .req w15
+t0i .req w4
+t1i .req w5
+t2i .req w6
+t3i .req w7
+t4i .req w8
+t5i .req w9
+t6i .req w10
+t7i .req w11
+t8i .req w12
+t9i .req w13
+tai .req w14
+tbi .req w15
 
 # integer variable registers
 # 64 bit variable (callee-saved) registers
-v0l .req x19
-v1l .req x20
-v2l .req x21
-v3l .req x22
-v4l .req x23
-v5l .req x24
-v6l .req x25
+v0l .req x16
+v1l .req x17
+v2l .req x18
+v3l .req x19
+v4l .req x20
+v5l .req x21
 
 # 32 bit variable (callee-saved) registers
-v0i .req w19
-v1i .req w20
-v2i .req w21
-v3i .req w22
-v4i .req w23
-v5i .req w24
-v6i .req w25
+v0i .req w16
+v1i .req w17
+v2i .req w18
+v3i .req w19
+v4i .req w20
+v5i .req w21
 
 # link register backups
-digitOrderLR .req x28
-holPatternLR .req x27
-binOpOrderLR .req x26
-
-
-# floating point registers
-# floating point parameter/result registers
-# vector parameter registers
-p0v .req v0
-p1v .req v1
-p2v .req v2
-p3v .req v3
-p4v .req v4
-p5v .req v5
-p6v .req v6
-p7v .req v7
-
-# vector result registers
-r0v .req v0
-r1v .req v1
-r2v .req v2
-r3v .req v3
-r4v .req v4
-r5v .req v5
-r6v .req v6
-r7v .req v7
-
-# quadword parameter registers
-p0q .req q0
-p1q .req q1
-p2q .req q2
-p3q .req q3
-p4q .req q4
-p5q .req q5
-p6q .req q6
-p7q .req q7
-
-# quadword result registers
-r0q .req q0
-r1q .req q1
-r2q .req q2
-r3q .req q3
-r4q .req q4
-r5q .req q5
-r6q .req q6
-r7q .req q7
-
-# doubleword parameter registers
-p0d .req d0
-p1d .req d1
-p2d .req d2
-p3d .req d3
-p4d .req d4
-p5d .req d5
-p6d .req d6
-p7d .req d7
-
-# doubleword result registers
-r0d .req d0
-r1d .req d1
-r2d .req d2
-r3d .req d3
-r4d .req d4
-r5d .req d5
-r6d .req d6
-r7d .req d7
-
-# singleword parameter registers
-p0s .req s0
-p1s .req s1
-p2s .req s2
-p3s .req s3
-p4s .req s4
-p5s .req s5
-p6s .req s6
-p7s .req s7
-
-# singleword result registers
-r0s .req s0
-r1s .req s1
-r2s .req s2
-r3s .req s3
-r4s .req s4
-r5s .req s5
-r6s .req s6
-r7s .req s7
-
-# halfword parameter registers
-p0h .req h0
-p1h .req h1
-p2h .req h2
-p3h .req h3
-p4h .req h4
-p5h .req h5
-p6h .req h6
-p7h .req h7
-
-# halfword result registers
-r0h .req h0
-r1h .req h1
-r2h .req h2
-r3h .req h3
-r4h .req h4
-r5h .req h5
-r6h .req h6
-r7h .req h7
-
-# byte parameter registers
-p0b .req b0
-p1b .req b1
-p2b .req b2
-p3b .req b3
-p4b .req b4
-p5b .req b5
-p6b .req b6
-p7b .req b7
-
-# byte result registers
-r0b .req b0
-r1b .req b1
-r2b .req b2
-r3b .req b3
-r4b .req b4
-r5b .req b5
-r6b .req b6
-r7b .req b7
-
-# foating point variable registers
-# vector variable registers (the d is a reminder that only the bottom 64 bits are preserved)
-v0vd .req v8
-v1vd .req v9
-v2vd .req v10
-v3vd .req v11
-v4vd .req v12
-v5vd .req v13
-v6vd .req v14
-v7vd .req v15
-
-# doubleword variable registers
-v0d .req d8
-v1d .req d9
-v2d .req d10
-v3d .req d11
-v4d .req d12
-v5d .req d13
-v6d .req d14
-v7d .req d15
-
-# singleword variable registers
-v0s .req s8
-v1s .req s9
-v2s .req s10
-v3s .req s11
-v4s .req s12
-v5s .req s13
-v6s .req s14
-v7s .req s15
-
-# halfword variable registers
-v0h .req h8
-v1h .req h9
-v2h .req h10
-v3h .req h11
-v4h .req h12
-v5h .req h13
-v6h .req h14
-v7h .req h15
-
-# byte variable registers
-v0b .req b8
-v1b .req b9
-v2b .req b10
-v3b .req b11
-v4b .req b12
-v5b .req b13
-v6b .req b14
-v7b .req b15
-
-# foating point temporary registers
-# vector temporary registers
-t0v .req v16
-t1v .req v17
-t2v .req v18
-t3v .req v19
-t4v .req v20
-t5v .req v21
-t6v .req v22
-t7v .req v23
-t8v .req v24
-t9v .req v25
-t10v .req v26
-t11v .req v27
-t12v .req v28
-t13v .req v29
-t14v .req v30
-t15v .req v31
-
-# quadword temporary registers
-t0q .req q16
-t1q .req q17
-t2q .req q18
-t3q .req q19
-t4q .req q20
-t5q .req q21
-t6q .req q22
-t7q .req q23
-t8q .req q24
-t9q .req q25
-t10q .req q26
-t11q .req q27
-t12q .req q28
-t13q .req q29
-t14q .req q30
-t15q .req q31
-
-# doubleword temporary registers
-t0d .req d16
-t1d .req d17
-t2d .req d18
-t3d .req d19
-t4d .req d20
-t5d .req d21
-t6d .req d22
-t7d .req d23
-t8d .req d24
-t9d .req d25
-t10d .req d26
-t11d .req d27
-t12d .req d28
-t13d .req d29
-t14d .req d30
-t15d .req d31
-
-# singleword temporary registers
-t0s .req s16
-t1s .req s17
-t2s .req s18
-t3s .req s19
-t4s .req s20
-t5s .req s21
-t6s .req s22
-t7s .req s23
-t8s .req s24
-t9s .req s25
-t10s .req s26
-t11s .req s27
-t12s .req s28
-t13s .req s29
-t14s .req s30
-t15s .req s31
-
-# halfword temporary registers
-t0h .req h16
-t1h .req h17
-t2h .req h18
-t3h .req h19
-t4h .req h20
-t5h .req h21
-t6h .req h22
-t7h .req h23
-t8h .req h24
-t9h .req h25
-t10h .req h26
-t11h .req h27
-t12h .req h28
-t13h .req h29
-t14h .req h30
-t15h .req h31
-
-# byte temporary registers
-t0b .req b16
-t1b .req b17
-t2b .req b18
-t3b .req b19
-t4b .req b20
-t5b .req b21
-t6b .req b22
-t7b .req b23
-t8b .req b24
-t9b .req b25
-t10b .req b26
-t11b .req b27
-t12b .req b28
-t13b .req b29
-t14b .req b30
-t15b .req b31
+holPatternLR .req x28
+binOpOrderLR .req x27

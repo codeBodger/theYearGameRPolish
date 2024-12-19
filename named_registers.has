@@ -1,0 +1,7 @@
+i    .req x27
+vals .req x26
+scrs .req x25
+
+rtArr .req x24
+fcArr .req x23
+dfArr .req x22

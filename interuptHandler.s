@@ -1,3 +1,5 @@
+.include "named_registers.has"
+
 .data
 handlerprintstring:
     .string "%3d: %ld\t%d\n"
@@ -24,28 +26,26 @@ interuptHandler:
     stp lr,  xzr, [SP, #16]!
 
     # Print the current state
-    i .req x19
-    mov i, #0
+    j .req x19
+    mov j, #0
 handlerloop:
-    cmp i, #101
+    cmp j, #101
     bge handlerloopE
 
     # get the value and store it in x20
-    ldr x0, =values
-    ldr x20, [x0, i, LSL #3]
+    ldr x20, [vals, j, LSL #3]
 
     # get the score and store it in x21
-    ldr x0, =scores
-    ldr x21, [x0, i, LSL #3]
+    ldr x21, [scrs, j]
 
     #call printf
     ldr x0, =handlerprintstring
-    mov x1, i
+    mov x1, j
     mov x2, x20
     mov x3, x21
     bl printf
 
-    add i, i, #1
+    add j, j, #1
 
 handlerloopE:
 

@@ -1,4 +1,5 @@
 #include "main.h"
+__asm__(".include \"reg_rename.has\"\n");
 
 uint64_t i;
 
@@ -10,7 +11,16 @@ uint64_t i;
 //     // i = 0; //dummy stuff so there's something in the functions to set a breakpoint to
 // }
 
+uint64_t values[101];
+uint8_t  scores[101];
+
+
 int main() {
+    __asm__(""
+        "ldr vals, =values\n\t"
+        "ldr scrs, =scores\n\n"
+    );
+
     initSqrt();
     initFact();
     initDfact();
