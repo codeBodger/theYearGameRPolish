@@ -1,8 +1,6 @@
 #include "main.h"
 __asm__(".include \"reg_rename.has\"\n");
 
-uint64_t i;
-
 // void interuptHandler(int sig) {
 //     //save ALL registers
 //     //print the current state
@@ -27,13 +25,13 @@ int main() {
 
     signal(SIGINT, interuptHandler);
 
-    for (i = 0; ; i++) {
-        goto digitOrder;
-    mainloopend:
-    }
-    return 0;
+    __asm__(""
+        "# do {\n\t"
+        "mov i, #0\n"
+    "mainloopstart:\n"
+    );
 
-digitOrder:
+// digitOrder:
     holPattern(DIGIT1, DIGIT2, DIGIT3, DIGIT4);
     holPattern(DIGIT1, DIGIT2, DIGIT4, DIGIT3);
     holPattern(DIGIT1, DIGIT3, DIGIT2, DIGIT4);
@@ -62,7 +60,20 @@ digitOrder:
     holPattern(DIGIT2, DIGIT4, DIGIT3, DIGIT1);
     holPattern(DIGIT2, DIGIT3, DIGIT4, DIGIT1);
 
-    goto mainloopend;
+    __asm__(""
+        "# i++\n\t"
+        "add i, i, #1\n\t"
+        "# } while (i)\n\t"
+        "cmp i, #0\n\t"
+        "bne mainloopstart\n\t"
+    );
+
+    // for (i = 0; ; i++) {
+    //     goto digitOrder;
+    // mainloopend:
+    // }
+    return 0;
+
 }
 
 
