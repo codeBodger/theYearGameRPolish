@@ -2,13 +2,13 @@
 
 uint64_t i;
 
-void interuptHandler(int sig) {
-    //save ALL registers
-    //print the current state
-    //restore ALL registers
+// void interuptHandler(int sig) {
+//     //save ALL registers
+//     //print the current state
+//     //restore ALL registers
 
-    i = 0; //dummy stuff so there's something in the functions to set a breakpoint to
-}
+//     // i = 0; //dummy stuff so there's something in the functions to set a breakpoint to
+// }
 
 int main() {
     initSqrt();
