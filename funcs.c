@@ -71,8 +71,8 @@ __asm__( ".global fact\nfact:\n\t"
 "fact_good:\n\t"
     "# t0l = factArr\n\t"
     "ldr t0l, =factArr\n\t"
-    "# p0i = (int*)t1l[p0i]\n\t"
-    "ldr p0i, [t0l, p0l, LSL #2]\n\t"
+    "# r0i = (int*)t1l[p0i]\n\t"
+    "ldr r0i, [t0l, p0l, LSL #2]\n\t"
     "ret\n\n\t"
 );
 
@@ -89,8 +89,8 @@ __asm__( ".global dfact\ndfact:\n\t"
 "dfact_good:\n\t"
     "# t0l = dfactArr\n\t"
     "ldr t0l, =dfactArr\n\t"
-    "# p0i = (int*)t1l[p0i]\n\t"
-    "ldr p0i, [t0l, p0l, LSL #2]\n\t"
+    "# r0i = (int*)t1l[p0i]\n\t"
+    "ldr r0i, [t0l, p0l, LSL #2]\n\t"
     "ret\n\n\t"
 );
 
