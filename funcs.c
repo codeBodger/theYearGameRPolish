@@ -1,21 +1,29 @@
 #include "funcs.h"
-__asm__(".include \"reg_rename.has\"\n\t");
+__asm__(".include \"reg_rename.has\"\n");
 
 int sqrtArr[SQRTARR_SIZE];
 int factArr[FACTARR_SIZE];
 int dfactArr[DFACTARR_SIZE];
 
-inline int abs(int v) {
-    __asm__(
-        "# Written as `inline int abs(int v)` in main.c\n\t"
-        "# r0i = abs(p0i), uses t0i\n\t"
-        "eor t0i, p0i, p0i asr #31\n\t"
-        "sub r0i, t0i, p0i asr #31\n\t"
-    );
-}
+// inline int abs(int v) {
+//     __asm__(
+//         "# Written as `inline int abs(int v)` in funcs.c\n\t"
+//         "# r0i = abs(p0i), uses t0i\n\t"
+//         "eor t0i, p0i, p0i asr #31\n\t"
+//         "sub r0i, t0i, p0i asr #31\n\t"
+//     );
+// }
+
+#define abs(reg) __asm__(
+    "# Written as `#define abs(reg)` in funcs.c\n\t"
+    "# " reg "= abs(" reg "), uses t0i\n\t"
+    "eor t0i, " reg ", " reg " asr #31\n\t"
+    "sub " reg ", t0i , " reg " asr #31\n"
+);
 
 
 int sqrt(int v) {
+    abs("p0i");
     if (sqrtArr[v % SQRTARR_SIZE] * sqrtArr[v % SQRTARR_SIZE] != v) return 0;
     return sqrtArr[v % SQRTARR_SIZE];
 }
