@@ -18,9 +18,12 @@ __asm__(".text\n");
 
 #define abs(reg) \
     "# Written as `#define abs(reg)` in funcs.c\n\t" \
-    "# " reg " = abs(" reg "), uses t0i\n\t" \
-    "eor t0i, " reg ", " reg " asr #31\n\t" \
-    "sub " reg ", t0i, " reg " asr #31\n\n\t" \
+    "# " reg " = abs(" reg "), clobbers flags\n\t" \
+    "tst " reg ", " reg "\n\t" \
+    "cneg " reg ", " reg ", MI\n\n\t"
+    // "# " reg " = abs(" reg "), uses t0i\n\t"
+    // "eor t0i, " reg ", " reg " ASR #31\n\t"
+    // "sub " reg ", t0i, " reg " ASR #31\n\n\t"
 
 __asm__( ".global isqrt\nisqrt:\n\t"
     "# int isqrt(int v) {\n\t\t"
