@@ -29,7 +29,7 @@ __asm__( ".global isqrt\nisqrt:\n\t"
         "# return sqrtArr[v % SQRTARR_SIZE];\n\t"
     "# }\n\n\t"
 
-    abs("p0i");
+    abs("p0i")
 
     "# t0i = p0i % SQRTARR_SIZE\n\t"
     "mov t1i, #0x2000000\n\t"
