@@ -14,7 +14,7 @@ int dfactArr[DFACTARR_SIZE];
 //     );
 // }
 
-__asm__("\n.text\n\n")
+__asm__("\n.text\n\n");
 
 #define abs(reg) \
     "# Written as `#define abs(reg)` in funcs.c\n\t" \
