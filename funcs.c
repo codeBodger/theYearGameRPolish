@@ -14,14 +14,15 @@ int dfactArr[DFACTARR_SIZE];
 //     );
 // }
 
+__asm__("\n.text\n\n")
+
 #define abs(reg) \
     "# Written as `#define abs(reg)` in funcs.c\n\t" \
     "# " reg " = abs(" reg "), uses t0i\n\t" \
     "eor t0i, " reg ", " reg " asr #31\n\t" \
     "sub " reg ", t0i, " reg " asr #31\n\n\t" \
 
-isqrt:
-__asm__(
+__asm__( ".global isqrt\nisqrt:\n\t"
     "# int isqrt(int v) {\n\t\t"
         "# abs(\"p0i\");\n\t\t"
         "# if (sqrtArr[v % SQRTARR_SIZE] * sqrtArr[v % SQRTARR_SIZE] != v) return 0;\n\t\t"
