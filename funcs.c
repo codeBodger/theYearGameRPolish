@@ -49,9 +49,9 @@ __asm__( ".global isqrt\nisqrt:\n\t"
     "mov r0i, #0\n\t"
     "ret\n\n\t"
 
-    "# else\n"
+    "# else return t1i\n"
 "isqrt_good:\n\t"
-    "move r0i, t1i\n\t"
+    "mov r0i, t1i\n\t"
     "ret\n"
 );
 
