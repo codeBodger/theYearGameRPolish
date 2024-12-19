@@ -22,7 +22,7 @@ int dfactArr[DFACTARR_SIZE];
 );
 
 
-int sqrt(int v) {
+int isqrt(int v) {
     abs("p0i");
     if (sqrtArr[v % SQRTARR_SIZE] * sqrtArr[v % SQRTARR_SIZE] != v) return 0;
     return sqrtArr[v % SQRTARR_SIZE];
