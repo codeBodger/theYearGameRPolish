@@ -8,14 +8,43 @@ int main() {
     initDfact();
 
     for (i = 0; ; i++) {
-        digitOrder();
+        goto digitOrder;
+    mainloopend:
     }
     return 0;
+
+digitOrder:
+    holPattern(DIGIT1, DIGIT2, DIGIT3, DIGIT4);
+    holPattern(DIGIT1, DIGIT2, DIGIT4, DIGIT3);
+    holPattern(DIGIT1, DIGIT3, DIGIT2, DIGIT4);
+    // holPattern(DIGIT1, DIGIT4, DIGIT2, DIGIT3);
+    // holPattern(DIGIT1, DIGIT4, DIGIT3, DIGIT2);
+    // holPattern(DIGIT1, DIGIT3, DIGIT4, DIGIT2);
+
+    holPattern(DIGIT2, DIGIT1, DIGIT3, DIGIT4);
+    holPattern(DIGIT2, DIGIT1, DIGIT4, DIGIT3);
+    holPattern(DIGIT3, DIGIT1, DIGIT2, DIGIT4);
+    // holPattern(DIGIT4, DIGIT1, DIGIT2, DIGIT3);
+    // holPattern(DIGIT4, DIGIT1, DIGIT3, DIGIT2);
+    // holPattern(DIGIT3, DIGIT1, DIGIT4, DIGIT2);
+
+    holPattern(DIGIT3, DIGIT2, DIGIT1, DIGIT4);
+    // holPattern(DIGIT4, DIGIT2, DIGIT1, DIGIT3);
+    holPattern(DIGIT2, DIGIT3, DIGIT1, DIGIT4);
+    holPattern(DIGIT2, DIGIT4, DIGIT1, DIGIT3);
+    // holPattern(DIGIT3, DIGIT4, DIGIT1, DIGIT2);
+    // holPattern(DIGIT4, DIGIT3, DIGIT1, DIGIT2);
+
+    // holPattern(DIGIT4, DIGIT2, DIGIT3, DIGIT1);
+    holPattern(DIGIT3, DIGIT2, DIGIT4, DIGIT1);
+    // holPattern(DIGIT4, DIGIT3, DIGIT2, DIGIT1);
+    // holPattern(DIGIT3, DIGIT4, DIGIT2, DIGIT1);
+    holPattern(DIGIT2, DIGIT4, DIGIT3, DIGIT1);
+    holPattern(DIGIT2, DIGIT3, DIGIT4, DIGIT1);
+
+    goto mainloopend;
 }
 
-void digitOrder() {
-
-}
 
 void holPattern(int d1, int d2, int d3, int d4) {
 
