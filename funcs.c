@@ -15,6 +15,12 @@ inline int abs(int v) {
 }
 
 
+int sqrt(int v) {
+    if (sqrtArr[v % SQRTARR_SIZE] * sqrtArr[v % SQRTARR_SIZE] != v) return 0;
+    return sqrtArr[v % SQRTARR_SIZE];
+}
+
+
 #define MAX_SQUAREABLE 0xB504
 void initSqrt() {
     for (int i = 0; i < MAX_SQUAREABLE; i++)
