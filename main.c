@@ -3,6 +3,10 @@
 uint64_t i;
 
 int main() {
+    initSqrt();
+    initFact();
+    initDfact();
+
     for (i = 0; ; i++) {
         digitOrder();
     }
