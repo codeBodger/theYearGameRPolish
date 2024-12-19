@@ -2,7 +2,7 @@
 #define FACTARR_SIZE 13
 #define DFACTARR_SIZE 20
 
-inline int abs(int v);
+// inline int abs(int v);
 int isqrt(int v);
 int fact(int v);
 int dfact(int v);
