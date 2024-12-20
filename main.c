@@ -77,22 +77,23 @@ int main() {
 
 
 void holPattern(int d1, int d2, int d3, int d4) {
+    register int d1_ = d1, d2_ = d2, d3_ = d3, d4_ = d4;
     // 000
-    binOpOrd0h(((d1*10 +d2)*10 +d3)*10 +d4);
+    binOpOrd0h(((d1_*10 +d2_)*10 +d3_)*10 +d4_);
     // 001
-    binOpOrd1h((d1*10 +d2)*10 +d3, d4);
+    binOpOrd1h((d1_*10 +d2_)*10 +d3_, d4_);
     // 010
-    binOpOrd1h(d1*10 +d2, d3*10 +d4);
+    binOpOrd1h(d1_*10 +d2_, d3_*10 +d4_);
     // 011
-    binOpOrd2h(d1*10 +d2, d3, d4);
+    binOpOrd2h(d1_*10 +d2_, d3_, d4_);
     // 100
-    binOpOrd1h(d1, (d2*10 +d3)*10 +d4);
+    binOpOrd1h(d1_, (d2_*10 +d3_)*10 +d4_);
     // 101
-    binOpOrd2h(d1, d2*10 +d3, d4);
+    binOpOrd2h(d1_, d2_*10 +d3_, d4_);
     // 110
-    binOpOrd2h(d1, d2, d3*10 +d4);
+    binOpOrd2h(d1_, d2_, d3_*10 +d4_);
     // 111
-    binOpOrd3h(d1, d2, d3, d4);
+    binOpOrd3h(d1_, d2_, d3_, d4_);
 }
 
 void binOpOrd3h(int n1, int n2, int n3, int n4) {
