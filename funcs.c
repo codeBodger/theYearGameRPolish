@@ -39,10 +39,8 @@ __asm__( ".global isqrt\nisqrt:\n\t"
     "udiv t0i, p0i, t1i\n\t"
     "msub t0i, t0i, t1i, p0i\n\n\t"
 
-    "# t1l = sqrtArr\n\t"
-    "ldr t1l, =sqrtArr\n\t"
-    "# t1i = (int*)t1l[t0i]\n\t"
-    "ldr t1i, [t1l, t0l, LSL #2]\n\n\t"
+    "# t1i = (int*)rtArr[t0i]\n\t"
+    "ldr t1i, [rtArr, t0l, LSL #2]\n\n\t"
 
     "# t0i = t1i * t1i\n\t"
     "mul t0i, t1i, t1i\n\t"
@@ -69,10 +67,8 @@ __asm__( ".global fact\nfact:\n\t"
 
     "# else return factArr[p0i]\n"
 "fact_good:\n\t"
-    "# t0l = factArr\n\t"
-    "ldr t0l, =factArr\n\t"
-    "# r0i = (int*)t1l[p0i]\n\t"
-    "ldr r0i, [t0l, p0l, LSL #2]\n\t"
+    "# r0i = (int*)fcArr[p0i]\n\t"
+    "ldr r0i, [fcArr, p0l, LSL #2]\n\t"
     "ret\n\n\t"
 );
 
@@ -87,10 +83,8 @@ __asm__( ".global dfact\ndfact:\n\t"
 
     "# else return dfactArr[p0i]\n"
 "dfact_good:\n\t"
-    "# t0l = dfactArr\n\t"
-    "ldr t0l, =dfactArr\n\t"
-    "# r0i = (int*)t1l[p0i]\n\t"
-    "ldr r0i, [t0l, p0l, LSL #2]\n\t"
+    "# r0i = (int*)dfArr[p0i]\n\t"
+    "ldr r0i, [dfArr, p0l, LSL #2]\n\t"
     "ret\n\n\t"
 );
 

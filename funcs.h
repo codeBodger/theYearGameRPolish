@@ -3,9 +3,9 @@
 #define DFACTARR_SIZE 20
 
 // inline int abs(int v);
-// int isqrt(int v);
-// int fact(int v);
-// int dfact(int v);
+int isqrt(int v);
+int fact(int v);
+int dfact(int v);
 int ipow(int b, int e);
 
 void initSqrt();
