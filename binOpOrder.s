@@ -52,11 +52,11 @@ binOpOrd0h:
             cmp r0i, #100
             bgt binOpOrd0h_0_end
         # check if better score
-            ldr t0i, [scrs, r0i]
+            ldr t0i, [scrs, r0l]
             cmp score, t0i
             ble binOpOrd0h_0_end
         # finally, we know it's better!
-            str i, [vals, r0i, LSL #3]
+            str i, [vals, r0l, LSL #3]
 
     binOpOrd0h_0_end:
 

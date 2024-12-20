@@ -7,4 +7,4 @@ fcArr .req x23
 dfArr .req x22
 
 cur_i .req x21
-score .req x20
+score .req w20
