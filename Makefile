@@ -1,4 +1,4 @@
-OBJECTS := main.o interuptHandler.o funcs.o
+OBJECTS := main.o interuptHandler.o funcs.o binOpOrder.o
 
 UFLAGS :=
 CFLAGS :=
