@@ -83,7 +83,7 @@ int main() {
         // ".cfi_restore 30\n\t"
         // ".cfi_restore 29\n\t"
         // ".cfi_def_cfa_offset 0\n\t"
-        "ret\n\t"
+        "ret\n"
         // ".cfi_endproc\n"
     );
 
@@ -125,6 +125,8 @@ int main() {
     __asm__(""
         "# restore the link register\n\t"
         "mov lr, holPatternLR\n\n"
+        
+        "ret\n\n"
     );
 }
 
