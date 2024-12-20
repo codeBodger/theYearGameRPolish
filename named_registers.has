@@ -5,3 +5,6 @@ scrs .req x25
 rtArr .req x24
 fcArr .req x23
 dfArr .req x22
+
+cur_i .req x21
+score .req x20

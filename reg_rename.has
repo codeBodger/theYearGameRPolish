@@ -66,16 +66,12 @@ v0l .req x16
 v1l .req x17
 v2l .req x18
 v3l .req x19
-v4l .req x20
-v5l .req x21
 
 # 32 bit variable (callee-saved) registers
 v0i .req w16
 v1i .req w17
 v2i .req w18
 v3i .req w19
-v4i .req w20
-v5i .req w21
 
 # link register backups
 holPatternLR .req x28
