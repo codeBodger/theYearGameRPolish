@@ -78,11 +78,11 @@ int main() {
         "# Tricking it into including stuff after returning\n\t"
         "mov w0, #0\n\t"
         "ldp x29, x30, [sp], 16\n\t"
-        ".cfi_restore 30\n\t"
-        ".cfi_restore 29\n\t"
-        ".cfi_def_cfa_offset 0\n\t"
+        // ".cfi_restore 30\n\t"
+        // ".cfi_restore 29\n\t"
+        // ".cfi_def_cfa_offset 0\n\t"
         "ret\n\t"
-        ".cfi_endproc\n"
+        // ".cfi_endproc\n"
     );
 
 
