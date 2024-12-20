@@ -29,38 +29,38 @@ int main() {
         "# do {\n\t"
         "mov i, #0\n"
     "mainloopstart:\n"
-    );
+    ); {
 
-// digitOrder:
-    holPattern(DIGIT1, DIGIT2, DIGIT3, DIGIT4);
-    holPattern(DIGIT1, DIGIT2, DIGIT4, DIGIT3);
-    holPattern(DIGIT1, DIGIT3, DIGIT2, DIGIT4);
-    // holPattern(DIGIT1, DIGIT4, DIGIT2, DIGIT3);
-    // holPattern(DIGIT1, DIGIT4, DIGIT3, DIGIT2);
-    // holPattern(DIGIT1, DIGIT3, DIGIT4, DIGIT2);
+    // digitOrder:
+        holPattern(DIGIT1, DIGIT2, DIGIT3, DIGIT4);
+        holPattern(DIGIT1, DIGIT2, DIGIT4, DIGIT3);
+        holPattern(DIGIT1, DIGIT3, DIGIT2, DIGIT4);
+        // holPattern(DIGIT1, DIGIT4, DIGIT2, DIGIT3);
+        // holPattern(DIGIT1, DIGIT4, DIGIT3, DIGIT2);
+        // holPattern(DIGIT1, DIGIT3, DIGIT4, DIGIT2);
 
-    holPattern(DIGIT2, DIGIT1, DIGIT3, DIGIT4);
-    holPattern(DIGIT2, DIGIT1, DIGIT4, DIGIT3);
-    holPattern(DIGIT3, DIGIT1, DIGIT2, DIGIT4);
-    // holPattern(DIGIT4, DIGIT1, DIGIT2, DIGIT3);
-    // holPattern(DIGIT4, DIGIT1, DIGIT3, DIGIT2);
-    // holPattern(DIGIT3, DIGIT1, DIGIT4, DIGIT2);
+        holPattern(DIGIT2, DIGIT1, DIGIT3, DIGIT4);
+        holPattern(DIGIT2, DIGIT1, DIGIT4, DIGIT3);
+        holPattern(DIGIT3, DIGIT1, DIGIT2, DIGIT4);
+        // holPattern(DIGIT4, DIGIT1, DIGIT2, DIGIT3);
+        // holPattern(DIGIT4, DIGIT1, DIGIT3, DIGIT2);
+        // holPattern(DIGIT3, DIGIT1, DIGIT4, DIGIT2);
 
-    holPattern(DIGIT3, DIGIT2, DIGIT1, DIGIT4);
-    // holPattern(DIGIT4, DIGIT2, DIGIT1, DIGIT3);
-    holPattern(DIGIT2, DIGIT3, DIGIT1, DIGIT4);
-    holPattern(DIGIT2, DIGIT4, DIGIT1, DIGIT3);
-    // holPattern(DIGIT3, DIGIT4, DIGIT1, DIGIT2);
-    // holPattern(DIGIT4, DIGIT3, DIGIT1, DIGIT2);
+        holPattern(DIGIT3, DIGIT2, DIGIT1, DIGIT4);
+        // holPattern(DIGIT4, DIGIT2, DIGIT1, DIGIT3);
+        holPattern(DIGIT2, DIGIT3, DIGIT1, DIGIT4);
+        holPattern(DIGIT2, DIGIT4, DIGIT1, DIGIT3);
+        // holPattern(DIGIT3, DIGIT4, DIGIT1, DIGIT2);
+        // holPattern(DIGIT4, DIGIT3, DIGIT1, DIGIT2);
 
-    // holPattern(DIGIT4, DIGIT2, DIGIT3, DIGIT1);
-    holPattern(DIGIT3, DIGIT2, DIGIT4, DIGIT1);
-    // holPattern(DIGIT4, DIGIT3, DIGIT2, DIGIT1);
-    // holPattern(DIGIT3, DIGIT4, DIGIT2, DIGIT1);
-    holPattern(DIGIT2, DIGIT4, DIGIT3, DIGIT1);
-    holPattern(DIGIT2, DIGIT3, DIGIT4, DIGIT1);
+        // holPattern(DIGIT4, DIGIT2, DIGIT3, DIGIT1);
+        holPattern(DIGIT3, DIGIT2, DIGIT4, DIGIT1);
+        // holPattern(DIGIT4, DIGIT3, DIGIT2, DIGIT1);
+        // holPattern(DIGIT3, DIGIT4, DIGIT2, DIGIT1);
+        holPattern(DIGIT2, DIGIT4, DIGIT3, DIGIT1);
+        holPattern(DIGIT2, DIGIT3, DIGIT4, DIGIT1);
 
-    __asm__(""
+    } __asm__(""
         "# i++\n\t"
         "add i, i, #1\n\t"
         "# } while (i)\n\t"
