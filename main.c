@@ -73,12 +73,26 @@ int main() {
     // mainloopend:
     // }
     return 0;
-
 }
 
 
 void holPattern(int d1, int d2, int d3, int d4) {
-
+    // 000
+    binOpOrd0h(((d1*10 +d2)*10 +d3)*10 +d4);
+    // 001
+    binOpOrd1h((d1*10 +d2)*10 +d3, d4);
+    // 010
+    binOpOrd1h(d1*10 +d2, d3*10 +d4);
+    // 011
+    binOpOrd2h(d1*10 +d2, d3, d4);
+    // 100
+    binOpOrd1h(d1, (d2*10 +d3)*10 +d4);
+    // 101
+    binOpOrd2h(d1, d2*10 +d3, d4);
+    // 110
+    binOpOrd2h(d1, d2, d3*10 +d4);
+    // 111
+    binOpOrd3h(d1, d2, d3, d4);
 }
 
 void binOpOrd3h(int n1, int n2, int n3, int n4) {
