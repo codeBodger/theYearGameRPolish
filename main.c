@@ -65,14 +65,25 @@ int main() {
         "add i, i, #1\n\t"
         "# } while (i)\n\t"
         "cmp i, #0\n\t"
-        "bne mainloopstart\n\t"
+        "bne mainloopstart\n"
     );
 
     // for (i = 0; ; i++) {
     //     goto digitOrder;
     // mainloopend:
     // }
-    return 0;
+
+    // return 0;
+    __asm__("# return 0;\n\t"
+        "# Tricking it into including stuff after returning\n\t"
+        "mov w0, #0\n\t"
+        "ldp x29, x30, [sp], 16\n\t"
+        ".cfi_restore 30\n\t"
+        ".cfi_restore 29\n\t"
+        ".cfi_def_cfa_offset 0\n\t"
+        "ret\n\t"
+        ".cfi_endproc\n\t"
+    );
 
 
     __asm__(""
@@ -89,7 +100,7 @@ int main() {
         "mov hp3i, p3i\n\n"
     );
 
-    register int d1, register int d2, register int d3, register int d4;
+    register int d1, d2, d3, d4;
     // 000
     binOpOrd0h(((d1*10 +d2)*10 +d3)*10 +d4);
     // 001
