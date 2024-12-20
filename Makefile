@@ -10,7 +10,7 @@ theYearGame: $(OBJECTS)
 	gcc -o $@ $(OBJECTS) $(UFLAGS) $(LFLAGS)
 %.s: %.c *.h
 	gcc -o $@ -S $< $(UFLAGS) $(CFLAGS)
-%.o: %.s
+%.o: %.s *.has
 	gcc -o $@ -c $< $(UFLAGS) $(AFLAGS)
 
 clean:
