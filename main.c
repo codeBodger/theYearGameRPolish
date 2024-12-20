@@ -82,7 +82,7 @@ int main() {
         ".cfi_restore 29\n\t"
         ".cfi_def_cfa_offset 0\n\t"
         "ret\n\t"
-        ".cfi_endproc\n\t"
+        ".cfi_endproc\n"
     );
 
 
@@ -100,23 +100,23 @@ int main() {
         "mov hp3i, p3i\n\n"
     );
 
-    register int d1, d2, d3, d4;
-    // 000
-    binOpOrd0h(((d1*10 +d2)*10 +d3)*10 +d4);
-    // 001
-    binOpOrd1h((d1*10 +d2)*10 +d3, d4);
-    // 010
-    binOpOrd1h(d1*10 +d2, d3*10 +d4);
-    // 011
-    binOpOrd2h(d1*10 +d2, d3, d4);
-    // 100
-    binOpOrd1h(d1, (d2*10 +d3)*10 +d4);
-    // 101
-    binOpOrd2h(d1, d2*10 +d3, d4);
-    // 110
-    binOpOrd2h(d1, d2, d3*10 +d4);
-    // 111
-    binOpOrd3h(d1, d2, d3, d4);
+        register int d1, d2, d3, d4;
+        // 000
+        binOpOrd0h(((d1*10 +d2)*10 +d3)*10 +d4);
+        // 001
+        binOpOrd1h((d1*10 +d2)*10 +d3, d4);
+        // 010
+        binOpOrd1h(d1*10 +d2, d3*10 +d4);
+        // 011
+        binOpOrd2h(d1*10 +d2, d3, d4);
+        // 100
+        binOpOrd1h(d1, (d2*10 +d3)*10 +d4);
+        // 101
+        binOpOrd2h(d1, d2*10 +d3, d4);
+        // 110
+        binOpOrd2h(d1, d2, d3*10 +d4);
+        // 111
+        binOpOrd3h(d1, d2, d3, d4);
 
     __asm__(""
         "# restore the link register\n\t"
