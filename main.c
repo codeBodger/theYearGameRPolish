@@ -28,11 +28,13 @@ int main() {
     __asm__(""
         "# do {\n\t"
         "mov i, #0\n"
-    "mainloopstart:\n"
+    "mainloopstart:\n\t"
+        "mov score, #3\n"
     ); {
 
     // digitOrder:
         holPattern(DIGIT1, DIGIT2, DIGIT3, DIGIT4);
+        __asm__("mov score, #2\n");
         holPattern(DIGIT1, DIGIT2, DIGIT4, DIGIT3);
         holPattern(DIGIT1, DIGIT3, DIGIT2, DIGIT4);
         // holPattern(DIGIT1, DIGIT4, DIGIT2, DIGIT3);
@@ -101,6 +103,7 @@ int main() {
     );
 
         register int d1, d2, d3, d4;
+        __asm__("sub score, score, #1\n");
         // 000
         binOpOrd0h(((d1*10 +d2)*10 +d3)*10 +d4);
         // 001
@@ -115,6 +118,7 @@ int main() {
         binOpOrd2h(d1, d2*10 +d3, d4);
         // 110
         binOpOrd2h(d1, d2, d3*10 +d4);
+        __asm__("add score, score, #1\n");
         // 111
         binOpOrd3h(d1, d2, d3, d4);
 
