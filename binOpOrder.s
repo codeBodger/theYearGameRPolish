@@ -1,5 +1,6 @@
 .include "reg_rename.has"
 
+    .global binOpOrd0h
 binOpOrd0h:
     # back up the link register
     mov binOpOrderLR, lr
