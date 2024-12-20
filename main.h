@@ -8,6 +8,9 @@
 #define DIGIT3 2
 #define DIGIT4 4
 
+#define LSR(args) __asm__("lsr " args "\n")
+#define AND(args) __asm__("and " args "\n")
+
 // void digitOrder();
 void holPattern(int d1, int d2, int d3, int d4);
 void binOpOrd3h(int n1, int n2, int n3, int n4);

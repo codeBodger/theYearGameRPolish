@@ -125,17 +125,39 @@ int main() {
 }
 
 void binOpOrd3h(int n1, int n2, int n3, int n4) {
-
+    // 123
+        // get a
+        // get unaries
+        // get sign
+        // get b
+        // get unaries
+        // get sign
+        // get binary
+        // get unaries
+        // get sign
+        // get c
+        // get unaries
+        // get sign
+        // get binary
+        // get unaries
+        // get sign
+        // get d
+        // get unaries
+        // get sign
+        // get binary
+        // get unaries
+        // get sign
+    // 132 (same as 231)
+    // 213
+    // 312
+    // 321
 }
 
 void binOpOrd2h(int n1, int n2, int n3) {
-
+    // 12
+    // 21
 }
 
 void binOpOrd1h(int n1, int n2) {
-
-}
-
-void binOpOrd0h(int n1) {
-
+    // 1
 }
