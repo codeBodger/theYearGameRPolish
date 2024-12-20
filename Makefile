@@ -1,4 +1,4 @@
-OBJECTS := main.o
+OBJECTS := main.o interuptHandler.o funcs.o
 
 UFLAGS :=
 CFLAGS :=
