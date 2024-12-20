@@ -12,3 +12,6 @@ theYearGame: $(OBJECTS)
 	gcc -o $@ -S $< $(UFLAGS) $(CFLAGS)
 %.o: %.s
 	gcc -o $@ -c $< $(UFLAGS) $(AFLAGS)
+
+clear:
+	rm *.o theYearGame
