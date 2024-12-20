@@ -73,27 +73,44 @@ int main() {
     // mainloopend:
     // }
     return 0;
-}
 
 
-void holPattern(int d1, int d2, int d3, int d4) {
-    register int d1_ = d1, d2_ = d2, d3_ = d3, d4_ = d4;
+    __asm__(""
+        "# MAKE SURE TO FIX REGISTER NUMBERS HERE!!!\n\t"
+        "# THAT IS: w19:w22 -> hp0i:hp3i\n"
+    "holPattern:\n\t"
+        "# back up the link register\n\t"
+        "mov holPatternLR, lr\n\n\t"
+
+        "# copy params to stable registers for this function\n\t"
+        "mov hp0i, p0i\n\t"
+        "mov hp1i, p1i\n\t"
+        "mov hp2i, p2i\n\t"
+        "mov hp3i, p3i\n\n"
+    );
+
+    register int d1, register int d2, register int d3, register int d4;
     // 000
-    binOpOrd0h(((d1_*10 +d2_)*10 +d3_)*10 +d4_);
+    binOpOrd0h(((d1*10 +d2)*10 +d3)*10 +d4);
     // 001
-    binOpOrd1h((d1_*10 +d2_)*10 +d3_, d4_);
+    binOpOrd1h((d1*10 +d2)*10 +d3, d4);
     // 010
-    binOpOrd1h(d1_*10 +d2_, d3_*10 +d4_);
+    binOpOrd1h(d1*10 +d2, d3*10 +d4);
     // 011
-    binOpOrd2h(d1_*10 +d2_, d3_, d4_);
+    binOpOrd2h(d1*10 +d2, d3, d4);
     // 100
-    binOpOrd1h(d1_, (d2_*10 +d3_)*10 +d4_);
+    binOpOrd1h(d1, (d2*10 +d3)*10 +d4);
     // 101
-    binOpOrd2h(d1_, d2_*10 +d3_, d4_);
+    binOpOrd2h(d1, d2*10 +d3, d4);
     // 110
-    binOpOrd2h(d1_, d2_, d3_*10 +d4_);
+    binOpOrd2h(d1, d2, d3*10 +d4);
     // 111
-    binOpOrd3h(d1_, d2_, d3_, d4_);
+    binOpOrd3h(d1, d2, d3, d4);
+
+    __asm__(""
+        "# restore the link register\n\t"
+        "mov lr, holPatternLR\n\n"
+    );
 }
 
 void binOpOrd3h(int n1, int n2, int n3, int n4) {

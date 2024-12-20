@@ -26,34 +26,39 @@ r1i .req w1
 r2i .req w2
 r3i .req w3
 
+# integer holPattern variable registers
+# 64 bit holPattern variable registers
+hp0l .req x4
+hp1l .req x5
+hp2l .req x6
+hp3l .req x7
+
+# 32 bit holPattern variable registers
+hp0i .req w4
+hp1i .req w5
+hp2i .req w6
+hp3i .req w7
+
 # integer temporary registers
 # 64 bit temporary registers
-t0l .req x4
-t1l .req x5
-t2l .req x6
-t3l .req x7
-t4l .req x8
-t5l .req x9
-t6l .req x10
-t7l .req x11
-t8l .req x12
-t9l .req x13
-tal .req x14
-tbl .req x15
+t0l .req x8
+t1l .req x9
+t2l .req x10
+t3l .req x11
+t4l .req x12
+t5l .req x13
+t6l .req x14
+t7l .req x15
 
 # 32 bit temporary registers
-t0i .req w4
-t1i .req w5
-t2i .req w6
-t3i .req w7
-t4i .req w8
-t5i .req w9
-t6i .req w10
-t7i .req w11
-t8i .req w12
-t9i .req w13
-tai .req w14
-tbi .req w15
+t0i .req w8
+t1i .req w9
+t2i .req w10
+t3i .req w11
+t4i .req w12
+t5i .req w13
+t6i .req w14
+t7i .req w15
 
 # integer variable registers
 # 64 bit variable (callee-saved) registers
