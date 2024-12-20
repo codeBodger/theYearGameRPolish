@@ -22,7 +22,7 @@ binOpOrd0h:
             nop
 
             # case 1:
-            bl sqrti
+            bl isqrt
             b binOpOrd0h_0_getu_0_btm
 
             # case 2:
