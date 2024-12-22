@@ -6,17 +6,17 @@ binOpOrd0h:
     mov binOpOrderLR, lr
 
     # 0
-        mov cur_i, i
+        mov bosi, i
         # get a: nothing to do, it's already there
         # get unaries
-        adr bo9l, binOpOrd0h_0_getu_0_jt
+        adr bojt, binOpOrd0h_0_getu_0_jt
             # load the address of the start of the jump table
         binOpOrd0h_0_getu_0_start:
-            and bo8l, cur_i, #3
-            lsl bo8l, bo8l, #3
-            lsr cur_i, cur_i, #2
-            add bo8l, bo8l, bo9l
-            br bo8l
+            and bosw, bosi, #3
+            lsl bosw, bosw, #3
+            lsr bosi, bosi, #2
+            add bosw, bosw, bojt
+            br bosw
         binOpOrd0h_0_getu_0_jt:
             # case 0:
             b binOpOrd0h_0_getu_0_end
@@ -40,9 +40,9 @@ binOpOrd0h:
         binOpOrd0h_0_getu_0_end:
 
         # get sign
-            and bo8l, cur_i, #1
-            lsr cur_i, cur_i, #1
-            cmp bo8l, #0
+            and bosw, bosi, #1
+            lsr bosi, bosi, #1
+            cmp bosw, #0
             beq binOpOrd0h_0_sign_0_end
             sub r0i, wzr, r0i
         binOpOrd0h_0_sign_0_end:

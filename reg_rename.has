@@ -48,9 +48,9 @@ bo3l .req x11
 bo4l .req x12
 bo5l .req x13
 bo6l .req x14
-bo7l .req x15
-bo8l .req x16
-bo9l .req x17
+bosi .req x15
+bosw .req x16
+bojt .req x17
 
 # 32 bit binOpOrder variable registers
 bo0i .req w8
@@ -60,9 +60,6 @@ bo3i .req w11
 bo4i .req w12
 bo5i .req w13
 bo6i .req w14
-bo7i .req w15
-bo8i .req w16
-bo9i .req w17
 
 # integer temporary registers
 # 64 bit temporary registers
