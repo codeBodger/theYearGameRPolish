@@ -12,9 +12,9 @@ binOpOrd0h:
         adr bojt, binOpOrd0h_0_getu_0_jt
             # load the address of the start of the jump table
         binOpOrd0h_0_getu_0_start:
-            and bosw, bosi, #3
-            lsl bosw, bosw, #3
-            lsr bosi, bosi, #2
+            and bosw, bosi, #0xC000000000000000
+            lsr bosw, bosw, #59
+            lsl bosi, bosi, #2
             add bosw, bosw, bojt
             br bosw
         binOpOrd0h_0_getu_0_jt:
@@ -40,8 +40,8 @@ binOpOrd0h:
         binOpOrd0h_0_getu_0_end:
 
         # get sign
-            and bosw, bosi, #1
-            lsr bosi, bosi, #1
+            and bosw, bosi, #0x8000000000000000
+            lsl bosi, bosi, #1
             cmp bosw, #0
             beq binOpOrd0h_0_sign_0_end
             sub r0i, wzr, r0i
