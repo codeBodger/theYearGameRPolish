@@ -1,12 +1,22 @@
-i    .req x27
-vals .req x26
-scrs .req x25
+# link register backup
+binOpOrderLR .req x29
 
-rtArr .req x24
-fcArr .req x23
-dfArr .req x22
+# global incrementer/expression generator
+i            .req x28
 
-score .req w21
+# indicate how much to increment i by
+incshft      .req x27
+maxshft      .req x26
 
-incshft .req x20
-maxshft .req x19
+# locations of arrays for storing good expressions
+vals         .req x25
+scrs         .req x24
+
+# locations of arrays for funcs.c
+rtArr        .req x23
+fcArr        .req x22
+dfArr        .req x21
+
+# global score info, updated in locations where
+# the score need be increased or decreased
+score        .req w20

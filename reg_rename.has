@@ -26,48 +26,41 @@ r1i .req w1
 r2i .req w2
 r3i .req w3
 
-# integer holPattern variable registers
-# 64 bit holPattern variable registers
-hp0l .req x4
-hp1l .req x5
-hp2l .req x6
-hp3l .req x7
-
-# 32 bit holPattern variable registers
-hp0i .req w4
-hp1i .req w5
-hp2i .req w6
-hp3i .req w7
-
 # integer binOpOrder variable registers
 # 64 bit binOpOrder variable registers
-bo0l .req x8
-bo1l .req x9
-bo2l .req x10
-bo3l .req x11
-bo4l .req x12
-bo5l .req x13
-bo6l .req x14
-bosi .req x15
-bosw .req x16
-bojt .req x17
+bo0l .req x4
+bo1l .req x5
+bo2l .req x6
+bo3l .req x7
+bo4l .req x8
+bo5l .req x9
+bo6l .req x10
+bosi .req x11
+bosw .req x12
+bojt .req x13
 
 # 32 bit binOpOrder variable registers
-bo0i .req w8
-bo1i .req w9
-bo2i .req w10
-bo3i .req w11
-bo4i .req w12
-bo5i .req w13
-bo6i .req w14
+bo0i .req w4
+bo1i .req w5
+bo2i .req w6
+bo3i .req w7
+bo4i .req w8
+bo5i .req w9
+bo6i .req w10
 
 # integer temporary registers
 # 64 bit temporary registers
-t0l .req x18
+t5l .req x14
+t4l .req x15
+t3l .req x16
+t2l .req x17
+t1l .req x18
+t0l .req x19
 
 # 32 bit temporary registers
-t0i .req w18
-
-# link register backups
-holPatternLR .req x28
-binOpOrderLR .req x27
+t5i .req w14
+t4i .req w15
+t3i .req w16
+t2i .req w17
+t1i .req w18
+t0i .req w19
