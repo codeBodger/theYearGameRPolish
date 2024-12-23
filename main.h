@@ -8,6 +8,11 @@
 #define DIGIT3 2
 #define DIGIT4 4
 
+#define CAT2(a, b) (a*10 + b)
+#define CAT3(a, b, c) (CAT2(a, b)*10 + c)
+#define CAT4(a, b, c, d) (CAT3(a, b, c)*10 + d)
+
+
 #define LSR(args) __asm__("lsr " args "\n")
 #define AND(args) __asm__("and " args "\n")
 
@@ -65,13 +70,13 @@ __asm__("add score, score, #1\n") \
 
 // #define HOLE_PATTERN(d1, d2, d3, d4) HOLE_PATTERN_##holePatn(d1, d2, d3, d4)
 
-#define HOLE_PATTERN_000(d1, d2, d3, d4) binOpOrd0h(((d1*10 +d2)*10 +d3)*10 +d4)
-#define HOLE_PATTERN_001(d1, d2, d3, d4) binOpOrd1h((d1*10 +d2)*10 +d3, d4)
-#define HOLE_PATTERN_010(d1, d2, d3, d4) binOpOrd1h(d1*10 +d2, d3*10 +d4)
-#define HOLE_PATTERN_011(d1, d2, d3, d4) binOpOrd2h(d1*10 +d2, d3, d4)
-#define HOLE_PATTERN_100(d1, d2, d3, d4) binOpOrd1h(d1, (d2*10 +d3)*10 +d4)
-#define HOLE_PATTERN_101(d1, d2, d3, d4) binOpOrd2h(d1, d2*10 +d3, d4)
-#define HOLE_PATTERN_110(d1, d2, d3, d4) binOpOrd2h(d1, d2, d3*10 +d4)
+#define HOLE_PATTERN_000(d1, d2, d3, d4) binOpOrd0h(CAT4(d1, d2, d3, d4))
+#define HOLE_PATTERN_001(d1, d2, d3, d4) binOpOrd1h(CAT3(d1, d2, d3), d4)
+#define HOLE_PATTERN_010(d1, d2, d3, d4) binOpOrd1h(CAT2(d1,d2), CAT2(d3, d4))
+#define HOLE_PATTERN_011(d1, d2, d3, d4) binOpOrd2h(CAT2(d1, d2), d3, d4)
+#define HOLE_PATTERN_100(d1, d2, d3, d4) binOpOrd1h(d1, CAT3(d2, d3, d4))
+#define HOLE_PATTERN_101(d1, d2, d3, d4) binOpOrd2h(d1, CAT2(d2, d3), d4)
+#define HOLE_PATTERN_110(d1, d2, d3, d4) binOpOrd2h(d1, d2, CAT2(d3, d4))
 #define HOLE_PATTERN_111(d1, d2, d3, d4) binOpOrd3h(d1, d2, d3, d4)
 
 
