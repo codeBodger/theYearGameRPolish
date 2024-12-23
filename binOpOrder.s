@@ -34,6 +34,36 @@ getu_0_btm\@:
 getu_0_end\@:
 .endm
 
+.macro GET_SIGN
+    and bosw, bosi, #0x8000000000000000 // 1 from left
+    lsl bosi, bosi, #1
+    add incshft, incshft, #1
+    cmp bosw, #0
+    beq sign_0_end\@
+    sub r0i, wzr, r0i
+sign_0_end\@:
+.emdm
+
+.macro UPDATE_VALUE_SCORE_ARRS, onIrrelevant
+# check if in range
+    cmp r0i, #0
+    blt \onIrrelevant
+    cmp r0i, #100
+    bgt \onIrrelevant
+# check if better score
+    ldr t0i, [scrs, r0l]
+    cmp score, t0i
+    ble \onIrrelevant
+# finally, we know it's better!
+    str i, [vals, r0l, LSL #3]
+    str score, [scrs, r0l]
+.endm
+
+.macro UPDATE_MAXSHFT
+    cmp incshft, maxshft
+    csel maxshft, incshft, maxshft, GT
+.endm
+
 
     .global binOpOrd0h
 binOpOrd0h:
@@ -49,30 +79,13 @@ binOpOrd0h:
         GET_UNARIES binOpOrd0h_0_end
 
         # get sign
-            and bosw, bosi, #0x8000000000000000 // 1 from left
-            lsl bosi, bosi, #1
-            add incshft, incshft, #1
-            cmp bosw, #0
-            beq binOpOrd0h_0_sign_0_end
-            sub r0i, wzr, r0i
-        binOpOrd0h_0_sign_0_end:
+        GET_SIGN
 
-        # check if in range
-            cmp r0i, #0
-            blt binOpOrd0h_0_end
-            cmp r0i, #100
-            bgt binOpOrd0h_0_end
-        # check if better score
-            ldr t0i, [scrs, r0l]
-            cmp score, t0i
-            ble binOpOrd0h_0_end
-        # finally, we know it's better!
-            str i, [vals, r0l, LSL #3]
+        UPDATE_VALUE_SCORE_ARRS binOpOrd0h_0_end
 
     binOpOrd0h_0_end:
         # maxshft = max(incshft, maxshft)
-        cmp incshft, maxshft
-        csel maxshft, incshft, maxshft, GT
+        UPDATE_MAXSHFT
 
     # restore the link register
     mov lr, binOpOrderLR
