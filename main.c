@@ -174,7 +174,3 @@ void binOpOrd2h(int n1, int n2, int n3) {
     // 12
     // 21
 }
-
-void binOpOrd1h(int n1, int n2) {
-    // 1
-}
