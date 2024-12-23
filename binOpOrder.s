@@ -42,7 +42,7 @@ getu_0_end\@:
     beq sign_0_end\@
     sub r0i, wzr, r0i
 sign_0_end\@:
-.emdm
+.endm
 
 .macro UPDATE_VALUE_SCORE_ARRS, onIrrelevant
 # check if in range
