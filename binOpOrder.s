@@ -182,3 +182,109 @@ binOpOrd1h:
     mov lr, binOpOrderLR
 
     ret
+
+    .global binOpOrd2h:
+binOpOrd2h:
+    // back up the link register
+    mov binOpOrderLR, lr
+
+    mov incshft, #-1
+
+    // store a, b, c in boab, bobb, bocb
+    mov boab, p0i
+    mov bobb, p1i
+    mov bocb, p2i
+
+    // 12
+        mov bosi, i
+        // get a: nothing to do, it's already there
+        // get unaries, sign
+
+        // save a -> 1
+
+        // get b
+
+        // get unaries, sign
+
+        // save b -> 2
+
+        // get c
+
+        // get unaries, sign
+
+        // save c -> 3
+
+        // get 1, 2
+
+        // get binary
+
+        // get unaries, sign
+
+        // save 1: no need, used immediately
+        // get 1: no need, and false because not saved
+        // get 3
+
+        // get binary
+
+        // get unaries, sign
+
+        // save 1: no need, we're done
+
+        // update val, score, arrs
+        UPDATE_VALUE_SCORE_ARRS binOpOrd1h_1_end
+
+        // finish up
+    binOpOrd2h_12_end:
+        // maxshft = max(incshft, maxshft)
+        UPDATE_MAXSHFT
+
+    // 21
+        mov bosi, i
+        // get a
+
+        // get unaries, sign
+
+        // save a -> 1
+
+        // get c
+
+        // get unaries, sign
+
+        // save c -> 3
+
+        // get b
+
+        // get unaries, sign
+
+        // save b: no need, used immediately
+        // get 2: no need, and false because not saved
+        // get 3
+
+        // get binary
+
+        // get unaries, sign
+
+        // save 2: no need, used immediately, but move to p1i
+
+        // get 1
+
+        // get 2: no need, and false because not saved
+
+        // get binary
+
+        // get unaries, sign
+
+        // save 1: no need, we're done
+
+        // update val, score, arrs
+        UPDATE_VALUE_SCORE_ARRS binOpOrd1h_1_end
+
+        // finish up
+    binOpOrd2h_21_end:
+        // maxshft = max(incshft, maxshft)
+        UPDATE_MAXSHFT
+
+    // restore the link register
+    mov lr, binOpOrderLR
+
+    ret
