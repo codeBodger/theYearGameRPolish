@@ -20,7 +20,7 @@
 #define MAINLOOP(holePatn) __asm__("" \
         "# do {\n\t" \
         "mov i, #0\n" \
-    "mainloopstart:\n\t" \
+    "mainloopstart_" #holePatn ":\n\t" \
         "mov score, #3\n" \
     ); \
 \
@@ -53,14 +53,14 @@ HOLE_PATTERN_##holePatn(DIGIT3, DIGIT2, DIGIT4, DIGIT1); \
 /* HOLE_PATTERN_##holePatn(DIGIT3, DIGIT4, DIGIT2, DIGIT1); */ \
 HOLE_PATTERN_##holePatn(DIGIT2, DIGIT4, DIGIT3, DIGIT1); \
 HOLE_PATTERN_##holePatn(DIGIT2, DIGIT3, DIGIT4, DIGIT1); \
-__asm__("add score, score, #1\n") \
+__asm__("add score, score, #1\n"); \
 \
     __asm__("" \
         "# i++\n\t" \
         "add i, i, #1\n\t" \
         "# } while (i)\n\t" \
         "cmp i, #0\n\t" \
-        "bne mainloopstart\n" \
+        "bne mainloopstart_" #holePatn "\n" \
     )
 
     // for (i = 0; ; i++) {
