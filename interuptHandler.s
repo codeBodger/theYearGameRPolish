@@ -7,7 +7,7 @@ handlerprintstring:
 .text
     .global interuptHandler
 interuptHandler:
-    # Save ALL registers
+    // Save ALL registers
     stp  x0,  x1, [SP, #16]!
     stp  x2,  x3, [SP, #16]!
     stp  x4,  x5, [SP, #16]!
@@ -25,17 +25,17 @@ interuptHandler:
     stp x28, x29, [SP, #16]!
     stp lr,  xzr, [SP, #16]!
 
-    # Print the current state
+    // Print the current state
     j .req x19
     mov j, #0
 handlerloop:
     cmp j, #101
     bge handlerloopE
 
-    # get the value and store it in x20
+    // get the value and store it in x20
     ldr x20, [vals, j, LSL #3]
 
-    # get the score and store it in x21
+    // get the score and store it in x21
     ldr x21, [scrs, j]
 
     #call printf
@@ -49,7 +49,7 @@ handlerloop:
 
 handlerloopE:
 
-    # Restore ALL registers
+    // Restore ALL registers
     ldp lr,  xzr, [SP], #16
     ldp x28, x29, [SP], #16
     ldp x26, x27, [SP], #16

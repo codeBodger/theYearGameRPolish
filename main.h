@@ -18,7 +18,7 @@
 
 
 #define MAINLOOP(holePatn) __asm__("" \
-        "# do {\n\t" \
+        "// do {\n\t" \
         "mov i, #0\n" \
     "mainloopstart_" #holePatn ":\n\t" \
         "mov maxshft, #-1\n" \
@@ -56,13 +56,13 @@ HOLE_PATTERN_##holePatn(DIGIT2, DIGIT3, DIGIT4, DIGIT1); \
 __asm__("add score, score, #1\n"); \
 \
     __asm__("" \
-        "# i++ (really a much more complex and smart thing, though) \n\t" \
+        "// i++ (really a much more complex and smart thing, though) \n\t" \
         "mov p0l, 0x8000000000000000 // 1 from left\n\t" \
         "lsr p1l, p0l, maxshft\n\t" \
         "asr p2l, p0l, maxshft\n\t" \
         "and i, i, p2l\n\t" \
         "add i, i, p1l\n\t" \
-        "# } while (i)\n\t" \
+        "// } while (i)\n\t" \
         "cmp i, #0\n\t" \
         "bne mainloopstart_" #holePatn "\n" \
     )

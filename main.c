@@ -37,7 +37,7 @@ int main() {
     MAINLOOP(111);
 
     // __asm__(""
-    //     "# do {\n\t"
+    //     "// do {\n\t"
     //     "mov i, #0\n"
     // "mainloopstart:\n\t"
     //     "mov score, #3\n"
@@ -74,9 +74,9 @@ int main() {
     //     holPattern(DIGIT2, DIGIT3, DIGIT4, DIGIT1);
 
     // } __asm__(""
-    //     "# i++\n\t"
+    //     "// i++\n\t"
     //     "add i, i, #1\n\t"
-    //     "# } while (i)\n\t"
+    //     "// } while (i)\n\t"
     //     "cmp i, #0\n\t"
     //     "bne mainloopstart\n"
     // );
@@ -87,8 +87,8 @@ int main() {
     // }
 
     return 0;
-    // __asm__("# return 0;\n\t"
-    //     "# Tricking it into including stuff after returning\n\t"
+    // __asm__("// return 0;\n\t"
+    //     "// Tricking it into including stuff after returning\n\t"
     //     "mov w0, #0\n\t"
     //     "ldp x29, x30, [sp], 16\n\t"
     //     // ".cfi_restore 30\n\t"
@@ -100,13 +100,13 @@ int main() {
 
 
     // __asm__(""
-    //     "# MAKE SURE TO FIX REGISTER NUMBERS HERE!!!\n\t"
-    //     "# THAT IS: w19:w22 -> hp0i:hp3i\n"
+    //     "// MAKE SURE TO FIX REGISTER NUMBERS HERE!!!\n\t"
+    //     "// THAT IS: w19:w22 -> hp0i:hp3i\n"
     // "holPattern:\n\t"
-    //     "# back up the link register\n\t"
+    //     "// back up the link register\n\t"
     //     "mov holPatternLR, lr\n\n\t"
 
-    //     "# copy params to stable registers for this function\n\t"
+    //     "// copy params to stable registers for this function\n\t"
     //     "mov hp0i, p0i\n\t"
     //     "mov hp1i, p1i\n\t"
     //     "mov hp2i, p2i\n\t"
@@ -134,7 +134,7 @@ int main() {
     //     binOpOrd3h(d1, d2, d3, d4);
 
     // __asm__(""
-    //     "# restore the link register\n\t"
+    //     "// restore the link register\n\t"
     //     "mov lr, holPatternLR\n\n"
         
     //     "ret\n\n"

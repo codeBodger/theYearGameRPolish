@@ -2,7 +2,7 @@
 
 
 .macro GET_BINARY, on0ret
-adr bojt, getb_jt\@ @; load the address of the start of the jump table
+adr bojt, getb_jt\@ // load the address of the start of the jump table
 
 getb_start\@:
     and bosw, bosi, #0xC000000000000000 // 3 from left
@@ -12,21 +12,21 @@ getb_start\@:
     add bosw, bosw, bojt
     br bosw
 getb_jt\@:
-    # case 0:
+    // case 0:
     add r0i, p0i, p1i
     b getb_end\@
 
-    # case 1:
+    // case 1:
     mul r0i, p0i, p1i
     b getb_end\@
 
-    # case 2:
+    // case 2:
     bl ipow
     b getb_0check\@
 
-    # case 3:
+    // case 3:
     sdiv r0i, p0i, p1i
-    # fall through to getb_0check\@
+    // fall through to getb_0check\@
 
 getb_0check\@:
     cmp r0i, #0
@@ -37,7 +37,7 @@ getb_end\@:
 
 .macro GET_UNARIES, on0ret
 adr bojt, getu_0_jt\@
-    # load the address of the start of the jump table
+    // load the address of the start of the jump table
 getu_0_start\@:
     and bosw, bosi, #0xC000000000000000 // 3 from left
     lsr bosw, bosw, #59
@@ -46,19 +46,19 @@ getu_0_start\@:
     add bosw, bosw, bojt
     br bosw
 getu_0_jt\@:
-    # case 0:
+    // case 0:
     b getu_0_end\@
     nop
 
-    # case 1:
+    // case 1:
     bl isqrt
     b getu_0_btm\@
 
-    # case 2:
+    // case 2:
     bl fact
     b getu_0_btm\@
 
-    # case 3:
+    // case 3:
     bl dfact
 
 getu_0_btm\@:
@@ -79,16 +79,16 @@ sign_0_end\@:
 .endm
 
 .macro UPDATE_VALUE_SCORE_ARRS, onIrrelevant
-# check if in range
+// check if in range
     cmp r0i, #0
     blt \onIrrelevant
     cmp r0i, #100
     bgt \onIrrelevant
-# check if better score
+// check if better score
     ldr t0i, [scrs, r0l]
     cmp score, t0i
     ble \onIrrelevant
-# finally, we know it's better!
+// finally, we know it's better!
     str i, [vals, r0l, LSL #3]
     str score, [scrs, r0l]
 .endm
@@ -101,84 +101,84 @@ sign_0_end\@:
 
     .global binOpOrd0h
 binOpOrd0h:
-    # back up the link register
+    // back up the link register
     mov binOpOrderLR, lr
 
     mov incshft, #-1
 
-    # 0
+    // 0
         mov bosi, i
-        # get a: nothing to do, it's already there
-        # get unaries
+        // get a: nothing to do, it's already there
+        // get unaries
         GET_UNARIES binOpOrd0h_0_end
 
-        # get sign
+        // get sign
         GET_SIGN
 
         UPDATE_VALUE_SCORE_ARRS binOpOrd0h_0_end
 
     binOpOrd0h_0_end:
-        # maxshft = max(incshft, maxshft)
+        // maxshft = max(incshft, maxshft)
         UPDATE_MAXSHFT
 
-    # restore the link register
+    // restore the link register
     mov lr, binOpOrderLR
 
     ret
 
     .global
 binOpOrd1h:
-    # back up the link register
+    // back up the link register
     mov binOpOrderLR, lr
 
     mov incshft, #-1
 
-    # no need to store a: only one combination, immediately needed
-    # store b in bobb
+    // no need to store a: only one combination, immediately needed
+    // store b in bobb
     mov bobb, p1i
 
-    # 1
+    // 1
         mov bosi, i
-        # get a: nothing to do, it's already there
-        # get unaries, sign
+        // get a: nothing to do, it's already there
+        // get unaries, sign
         GET_UNARIES binOpOrd1h_1_end
         GET_SIGN
 
-        # save a -> 1
+        // save a -> 1
         mov bo1b, r0i
 
-        # get b
+        // get b
         mov p0i, bobb
 
-        # get unaries, sign
+        // get unaries, sign
         GET_UNARIES binOpOrd1h_1_end
         GET_SIGN
 
-        # save b -> 2
+        // save b -> 2
         mov bo2b, r0i
 
-        # get 1, 2
+        // get 1, 2
         mov p0i, bo1b
         mov p1o, bo2b
 
-        # get binary
+        // get binary
         GET_BINARY binOpOrd1h_1_end
 
-        # get unaries, sign
+        // get unaries, sign
         GET_UNARIES binOpOrd1h_1_end
         GET_SIGN
 
-        # save 1: no need, we're done
+        // save 1: no need, we're done
 
-        # update val, score, arrs
+        // update val, score, arrs
         UPDATE_VALUE_SCORE_ARRS binOpOrd1h_1_end
 
-        # finish up
+        // finish up
     binOpOrd1h_1_end:
-        # maxshft = max(incshft, maxshft)
+        // maxshft = max(incshft, maxshft)
         UPDATE_MAXSHFT
 
-    # restore the link register
+    // restore the link register
     mov lr, binOpOrderLR
 
     ret
