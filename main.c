@@ -141,32 +141,3 @@ int main() {
     //     "ret\n\n"
     // );
 }
-
-void binOpOrd3h(int n1, int n2, int n3, int n4) {
-    // 123
-        // get a
-        // get unaries
-        // get sign
-        // get b
-        // get unaries
-        // get sign
-        // get binary
-        // get unaries
-        // get sign
-        // get c
-        // get unaries
-        // get sign
-        // get binary
-        // get unaries
-        // get sign
-        // get d
-        // get unaries
-        // get sign
-        // get binary
-        // get unaries
-        // get sign
-    // 132 (same as 231)
-    // 213
-    // 312
-    // 321
-}
