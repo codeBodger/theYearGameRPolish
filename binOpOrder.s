@@ -126,7 +126,7 @@ binOpOrd0h:
 
     ret
 
-    .global
+    .global binOpOrd1h
 binOpOrd1h:
     // back up the link register
     mov binOpOrderLR, lr
@@ -159,7 +159,7 @@ binOpOrd1h:
 
         // get 1, 2
         mov p0i, bo1b
-        mov p1o, bo2b
+        mov p1i, bo2b
 
         // get binary
         GET_BINARY binOpOrd1h_1_end

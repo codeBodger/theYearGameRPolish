@@ -88,6 +88,10 @@ __asm__( ".global dfact\ndfact:\n\t"
     "ret\n\n\t"
 );
 
+int ipow(int b, int e) {
+    
+}
+
 #define MAX_SQUAREABLE 0xB504
 void initSqrt() {
     for (int i = 0; i < MAX_SQUAREABLE; i++)
