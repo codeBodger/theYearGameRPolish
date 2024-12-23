@@ -36,36 +36,36 @@ getb_end\@:
 .endm
 
 .macro GET_UNARIES, on0ret
-adr bojt, getu_0_jt\@
+adr bojt, getu_jt\@
     // load the address of the start of the jump table
-getu_0_start\@:
+getu_start\@:
     and bosw, bosi, #0xC000000000000000 // 3 from left
     lsr bosw, bosw, #59
     lsl bosi, bosi, #2
     add incshft, incshft, #2
     add bosw, bosw, bojt
     br bosw
-getu_0_jt\@:
+getu_jt\@:
     // case 0:
-    b getu_0_end\@
+    b getu_end\@
     nop
 
     // case 1:
     bl isqrt
-    b getu_0_btm\@
+    b getu_btm\@
 
     // case 2:
     bl fact
-    b getu_0_btm\@
+    b getu_btm\@
 
     // case 3:
     bl dfact
 
-getu_0_btm\@:
+getu_btm\@:
     cmp r0i, #0
     beq \on0ret
-    b getu_0_start\@
-getu_0_end\@:
+    b getu_start\@
+getu_end\@:
 .endm
 
 .macro GET_SIGN
