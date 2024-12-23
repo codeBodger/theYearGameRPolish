@@ -89,7 +89,7 @@ __asm__( ".global dfact\ndfact:\n\t"
 );
 
 int ipow(int b, int e) {
-    
+    return 0;
 }
 
 #define MAX_SQUAREABLE 0xB504
