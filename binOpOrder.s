@@ -29,7 +29,7 @@ getu_0_jt\@:
 
 getu_0_btm\@:
     cmp r0i, #0
-    beq on0ret
+    beq \on0ret
     b getu_0_start\@
 getu_0_end\@:
 .endm
