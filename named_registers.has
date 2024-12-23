@@ -9,3 +9,4 @@ dfArr .req x22
 score .req w21
 
 incshft .req x20
+maxshft .req x19

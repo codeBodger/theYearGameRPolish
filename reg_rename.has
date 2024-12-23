@@ -64,11 +64,9 @@ bo6i .req w14
 # integer temporary registers
 # 64 bit temporary registers
 t0l .req x18
-t1l .req x19
 
 # 32 bit temporary registers
 t0i .req w18
-t1i .req w19
 
 # link register backups
 holPatternLR .req x28
