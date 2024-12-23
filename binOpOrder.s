@@ -251,7 +251,7 @@ binOpOrd2h:
         // save 1: no need, we're done
 
         // update val, score, arrs
-        UPDATE_VALUE_SCORE_ARRS binOpOrd1h_1_end
+        UPDATE_VALUE_SCORE_ARRS binOpOrd2h_12_end
 
         // finish up
     binOpOrd2h_12_end:
@@ -317,7 +317,7 @@ binOpOrd2h:
         // save 1: no need, we're done
 
         // update val, score, arrs
-        UPDATE_VALUE_SCORE_ARRS binOpOrd1h_1_end
+        UPDATE_VALUE_SCORE_ARRS binOpOrd2h_21_end
 
         // finish up
     binOpOrd2h_21_end:
