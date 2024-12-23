@@ -328,3 +328,106 @@ binOpOrd2h:
     mov lr, binOpOrderLR
 
     ret
+
+    .global binOpOrd3h
+binOpOrd3h:
+    // back up the link register
+    mov binOpOrderLR, lr
+
+    mov incshft, #-1
+
+    // store a, b, c, d in boab, bobb, bocb, bodb
+    mov boab, p0i
+    mov bobb, p1i
+    mov bocb, p2i
+    mov bodb, p3i
+
+    // 123
+        mov bosi, i
+        // get a: nothing to do, it's already there
+        // get unaries, sign
+        GET_UNARIES binOpOrd3h_123_end
+        GET_SIGN
+
+        // save a -> 1
+        mov bo1b, r0i
+
+        // get b
+        mov p0i, bobb
+
+        // get unaries, sign
+        GET_UNARIES binOpOrd3h_123_end
+        GET_SIGN
+
+        // save b -> 2
+        mov bo2b, r0i
+
+        // get c
+        mov p0i, bocb
+
+        // get unaries, sign
+        GET_UNARIES binOpOrd3h_123_end
+        GET_SIGN
+
+        // save c -> 3
+        mov bo3b, r0i
+
+        // get d
+        mov p0i, bodb
+
+        // get unaries, sign
+        GET_UNARIES binOpOrd3h_123_end
+        GET_SIGN
+
+        // save d -> 4
+        mov bo4b, r0i
+
+        // get 1, 2
+        mov p0i, bo1b
+        mov p1i, bo2b
+
+        // get binary
+        GET_BINARY binOpOrd3h_123_end
+
+        // get unaries, sign
+        GET_UNARIES binOpOrd3h_123_end
+        GET_SIGN
+
+        // save 1: no need, used immediately
+        // get 1: no need, and false because not saved
+        // get 3
+        mov p1i, bo3b
+
+        // get binary
+        GET_BINARY binOpOrd3h_123_end
+
+        // get unaries, sign
+        GET_UNARIES binOpOrd3h_123_end
+        GET_SIGN
+
+        // save 1: no need, used immediately
+        // get 1: no need, and false because not saved
+        // get 4
+        mov p1i, bo4b
+
+        // get binary
+        GET_BINARY binOpOrd3h_123_end
+
+        // get unaries, sign
+        GET_UNARIES binOpOrd3h_123_end
+        GET_SIGN
+
+        // save 1: no need, we're done
+
+        // update val, score, arrs
+        UPDATE_VALUE_SCORE_ARRS binOpOrd3h_123_end
+
+        // finish up
+    binOpOrd3h_123_end:
+        // maxshft = max(incshft, maxshft)
+        UPDATE_MAXSHFT
+
+    // restore the link register
+    mov lr, binOpOrderLR
+
+    ret
