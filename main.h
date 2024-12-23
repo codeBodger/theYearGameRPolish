@@ -21,7 +21,6 @@
         "# do {\n\t" \
         "mov i, #0\n" \
     "mainloopstart_" #holePatn ":\n\t" \
-        "mov score, #3\n" \
     ); \
 \
     /* digitOrder: */ \
