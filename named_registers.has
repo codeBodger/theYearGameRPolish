@@ -20,3 +20,6 @@ dfArr        .req x21
 # global score info, updated in locations where
 # the score need be increased or decreased
 score        .req w20
+
+# global constant for max increment shift
+maxShift     .req x19

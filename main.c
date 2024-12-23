@@ -16,7 +16,8 @@ uint8_t  scores[101];
 int main() {
     __asm__(""
         "ldr vals, =values\n\t"
-        "ldr scrs, =scores\n\n"
+        "ldr scrs, =scores\n\n\t"
+        "mov maxShift, #63\n\n"
     );
 
     initSqrt();

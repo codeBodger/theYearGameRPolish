@@ -56,6 +56,9 @@ HOLE_PATTERN_##holePatn(DIGIT2, DIGIT3, DIGIT4, DIGIT1); \
 __asm__("add score, score, #1\n"); \
 \
     __asm__("" \
+        "// maxshft = min(maxshft, maxShift)\n\t" \
+        "cmp maxshft, maxShift\n\t" \
+        "csel maxshft, maxshft, maxShift, LT\n\t" \
         "// i++ (really a much more complex and smart thing, though) \n\t" \
         "mov p0l, 0x8000000000000000 // 1 from left\n\t" \
         "lsr p1l, p0l, maxshft\n\t" \

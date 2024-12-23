@@ -45,15 +45,13 @@ bodb .req w11
 
 # integer temporary registers
 # 64 bit temporary registers
-t4l .req x15
-t3l .req x16
-t2l .req x17
-t1l .req x18
-t0l .req x19
+t3l .req x15
+t2l .req x16
+t1l .req x17
+t0l .req x18
 
 # 32 bit temporary registers
-t4i .req w15
-t3i .req w16
-t2i .req w17
-t1i .req w18
-t0i .req w19
+t3i .req w15
+t2i .req w16
+t1i .req w17
+t0i .req w18
