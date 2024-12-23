@@ -17,46 +17,46 @@
         "mov i, #0\n" \
     "mainloopstart:\n\t" \
         "mov score, #3\n" \
-    ); { \
+    ); \
 
     /* digitOrder: */ \
-        HOLE_PATTERN_##holePatn(DIGIT1, DIGIT2, DIGIT3, DIGIT4); \
-        __asm__("sub score, score, #1\n"); \
-        HOLE_PATTERN_##holePatn(DIGIT1, DIGIT2, DIGIT4, DIGIT3); \
-        HOLE_PATTERN_##holePatn(DIGIT1, DIGIT3, DIGIT2, DIGIT4); \
-        /* HOLE_PATTERN_##holePatn(DIGIT1, DIGIT4, DIGIT2, DIGIT3); \
-        HOLE_PATTERN_##holePatn(DIGIT1, DIGIT4, DIGIT3, DIGIT2); \
-        HOLE_PATTERN_##holePatn(DIGIT1, DIGIT3, DIGIT4, DIGIT2); */ \
+HOLE_PATTERN_##holePatn(DIGIT1, DIGIT2, DIGIT3, DIGIT4); \
+__asm__("sub score, score, #1\n"); \
+HOLE_PATTERN_##holePatn(DIGIT1, DIGIT2, DIGIT4, DIGIT3); \
+HOLE_PATTERN_##holePatn(DIGIT1, DIGIT3, DIGIT2, DIGIT4); \
+/* HOLE_PATTERN_##holePatn(DIGIT1, DIGIT4, DIGIT2, DIGIT3); */ \
+/* HOLE_PATTERN_##holePatn(DIGIT1, DIGIT4, DIGIT3, DIGIT2); */ \
+/* HOLE_PATTERN_##holePatn(DIGIT1, DIGIT3, DIGIT4, DIGIT2); */ \
 
-        HOLE_PATTERN_##holePatn(DIGIT2, DIGIT1, DIGIT3, DIGIT4); \
-        HOLE_PATTERN_##holePatn(DIGIT2, DIGIT1, DIGIT4, DIGIT3); \
-        HOLE_PATTERN_##holePatn(DIGIT3, DIGIT1, DIGIT2, DIGIT4); \
-        /* HOLE_PATTERN_##holePatn(DIGIT4, DIGIT1, DIGIT2, DIGIT3); \
-        HOLE_PATTERN_##holePatn(DIGIT4, DIGIT1, DIGIT3, DIGIT2); \
-        HOLE_PATTERN_##holePatn(DIGIT3, DIGIT1, DIGIT4, DIGIT2); */ \
+HOLE_PATTERN_##holePatn(DIGIT2, DIGIT1, DIGIT3, DIGIT4); \
+HOLE_PATTERN_##holePatn(DIGIT2, DIGIT1, DIGIT4, DIGIT3); \
+HOLE_PATTERN_##holePatn(DIGIT3, DIGIT1, DIGIT2, DIGIT4); \
+/* HOLE_PATTERN_##holePatn(DIGIT4, DIGIT1, DIGIT2, DIGIT3); */ \
+/* HOLE_PATTERN_##holePatn(DIGIT4, DIGIT1, DIGIT3, DIGIT2); */ \
+/* HOLE_PATTERN_##holePatn(DIGIT3, DIGIT1, DIGIT4, DIGIT2); */ \
 
-        HOLE_PATTERN_##holePatn(DIGIT3, DIGIT2, DIGIT1, DIGIT4); \
-        /* HOLE_PATTERN_##holePatn(DIGIT4, DIGIT2, DIGIT1, DIGIT3); */ \
-        HOLE_PATTERN_##holePatn(DIGIT2, DIGIT3, DIGIT1, DIGIT4); \
-        HOLE_PATTERN_##holePatn(DIGIT2, DIGIT4, DIGIT1, DIGIT3); \
-        /* HOLE_PATTERN_##holePatn(DIGIT3, DIGIT4, DIGIT1, DIGIT2); \
-        HOLE_PATTERN_##holePatn(DIGIT4, DIGIT3, DIGIT1, DIGIT2); */ \
+HOLE_PATTERN_##holePatn(DIGIT3, DIGIT2, DIGIT1, DIGIT4); \
+/* HOLE_PATTERN_##holePatn(DIGIT4, DIGIT2, DIGIT1, DIGIT3); */ \
+HOLE_PATTERN_##holePatn(DIGIT2, DIGIT3, DIGIT1, DIGIT4); \
+HOLE_PATTERN_##holePatn(DIGIT2, DIGIT4, DIGIT1, DIGIT3); \
+/* HOLE_PATTERN_##holePatn(DIGIT3, DIGIT4, DIGIT1, DIGIT2); */ \
+/* HOLE_PATTERN_##holePatn(DIGIT4, DIGIT3, DIGIT1, DIGIT2); */ \
 
-        /* HOLE_PATTERN_##holePatn(DIGIT4, DIGIT2, DIGIT3, DIGIT1); */ \
-        HOLE_PATTERN_##holePatn(DIGIT3, DIGIT2, DIGIT4, DIGIT1); \
-        /* HOLE_PATTERN_##holePatn(DIGIT4, DIGIT3, DIGIT2, DIGIT1); \
-        HOLE_PATTERN_##holePatn(DIGIT3, DIGIT4, DIGIT2, DIGIT1); */ \
-        HOLE_PATTERN_##holePatn(DIGIT2, DIGIT4, DIGIT3, DIGIT1); \
-        HOLE_PATTERN_##holePatn(DIGIT2, DIGIT3, DIGIT4, DIGIT1); \
-        __asm__("add score, score, #1\n")
+/* HOLE_PATTERN_##holePatn(DIGIT4, DIGIT2, DIGIT3, DIGIT1); */ \
+HOLE_PATTERN_##holePatn(DIGIT3, DIGIT2, DIGIT4, DIGIT1); \
+/* HOLE_PATTERN_##holePatn(DIGIT4, DIGIT3, DIGIT2, DIGIT1); */ \
+/* HOLE_PATTERN_##holePatn(DIGIT3, DIGIT4, DIGIT2, DIGIT1); */ \
+HOLE_PATTERN_##holePatn(DIGIT2, DIGIT4, DIGIT3, DIGIT1); \
+HOLE_PATTERN_##holePatn(DIGIT2, DIGIT3, DIGIT4, DIGIT1); \
+__asm__("add score, score, #1\n") \
 
-    } __asm__("" \
+    __asm__("" \
         "# i++\n\t" \
         "add i, i, #1\n\t" \
         "# } while (i)\n\t" \
         "cmp i, #0\n\t" \
         "bne mainloopstart\n" \
-    );
+    )
 
     // for (i = 0; ; i++) {
     //     goto digitOrder;
