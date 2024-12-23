@@ -183,7 +183,7 @@ binOpOrd1h:
 
     ret
 
-    .global binOpOrd2h:
+    .global binOpOrd2h
 binOpOrd2h:
     // back up the link register
     mov binOpOrderLR, lr
@@ -199,34 +199,54 @@ binOpOrd2h:
         mov bosi, i
         // get a: nothing to do, it's already there
         // get unaries, sign
+        GET_UNARIES binOpOrd2h_12_end
+        GET_SIGN
 
         // save a -> 1
+        mov bo1b, r0i
 
         // get b
+        mov p0i, bobb
 
         // get unaries, sign
+        GET_UNARIES binOpOrd2h_12_end
+        GET_SIGN
 
         // save b -> 2
+        mov bo2b, r0i
 
         // get c
+        mov p0i, bocb
 
         // get unaries, sign
+        GET_UNARIES binOpOrd2h_12_end
+        GET_SIGN
 
         // save c -> 3
+        mov bo3b, r0i
 
         // get 1, 2
+        mov p0i, bo1b
+        mov p1i, bo2b
 
         // get binary
+        GET_BINARY binOpOrd2h_12_end
 
         // get unaries, sign
+        GET_UNARIES binOpOrd2h_12_end
+        GET_SIGN
 
         // save 1: no need, used immediately
         // get 1: no need, and false because not saved
         // get 3
+        mov p1i, bo3b
 
         // get binary
+        GET_BINARY binOpOrd2h_12_end
 
         // get unaries, sign
+        GET_UNARIES binOpOrd2h_12_end
+        GET_SIGN
 
         // save 1: no need, we're done
 
@@ -241,38 +261,58 @@ binOpOrd2h:
     // 21
         mov bosi, i
         // get a
+        mov p0i, boab
 
         // get unaries, sign
+        GET_UNARIES binOpOrd2h_21_end
+        GET_SIGN
 
         // save a -> 1
+        mov bo1b, r0i
 
         // get c
+        mov p0i, bocb
 
         // get unaries, sign
+        GET_UNARIES binOpOrd2h_21_end
+        GET_SIGN
 
         // save c -> 3
+        mov bo3b, r0i
 
         // get b
+        mov p0i, bobb
 
         // get unaries, sign
+        GET_UNARIES binOpOrd2h_21_end
+        GET_SIGN
 
         // save b: no need, used immediately
         // get 2: no need, and false because not saved
         // get 3
+        mov p1i, bo3b
 
         // get binary
+        GET_BINARY binOpOrd2h_21_end
 
         // get unaries, sign
+        GET_UNARIES binOpOrd2h_21_end
+        GET_SIGN
 
         // save 2: no need, used immediately, but move to p1i
+        mov p1i, r0i
 
         // get 1
+        mov p0i, bo1b
 
         // get 2: no need, and false because not saved
 
         // get binary
+        GET_BINARY binOpOrd2h_21_end
 
         // get unaries, sign
+        GET_UNARIES binOpOrd2h_21_end
+        GET_SIGN
 
         // save 1: no need, we're done
 
