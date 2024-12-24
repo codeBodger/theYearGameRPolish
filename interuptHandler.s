@@ -2,9 +2,9 @@
 
 .data
 handler_i_printString:
-    .string "i:\t%d\n"
+    .string "\ni:%16lx\n"
 handlerLoopPrintString:
-    .string "%3d: value:%ld\tscore:%d\n"
+    .string "%3d: value:%16lx\tscore:%d\n"
 handlerPromptPrintString:
     .string "Would you like to stop the program? (y/N): "
 handlerPromptScanString:
@@ -66,7 +66,7 @@ handlerloopE:
     mov x1, SP
     add x1, x1, #8
     bl scanf
-    ldrb x0, [SP, #8]
+    ldrb w0, [SP, #8]
     cmp x0, #'y'
     beq earlyExit
 
