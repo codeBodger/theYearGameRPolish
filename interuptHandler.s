@@ -44,22 +44,22 @@ handlerloop:
     bgt handlerloopE
 
     add j_, j, #50
-    // get the values and store them in x21, x23
-    ldr x21, [vals, j,  LSL #3]
-    ldr x23, [vals, j_, LSL #3]
+    // get the values and store them in x2, x5
+    ldr x2, [vals, j,  LSL #3]
+    ldr x5, [vals, j_, LSL #3]
 
-    // get the scores and store them in x22, x24
-    ldrb w22, [scrs, j ]
-    ldrb w24, [scrs, j_]
+    // get the scores and store them in x3, x6
+    ldrb w3, [scrs, j ]
+    ldrb w6, [scrs, j_]
 
     #call printf
     ldr x0, =handlerLoopPrintString
     mov x1, j
-    mov x2, x21
-    mov x3, x22
+//  mov x2, x21
+//  mov x3, x22
     mov x4, j_
-    mov x5, x23
-    mov x6, x24
+//  mov x5, x23
+//  mov x6, x24
     bl printf
 
     add j, j, #1
