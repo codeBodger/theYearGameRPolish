@@ -1,8 +1,14 @@
-.include "named_registers.has"
+.include "reg_rename.has"
 
 .data
-handlerprintstring:
-    .string "%3d: %ld\t%d\n"
+handler_i_printString:
+    .string "i:\t%d\n"
+handlerLoopPrintString:
+    .string "%3d: value:%ld\tscore:%d\n"
+handlerPromptPrintString:
+    .string "Would you like to stop the program? (y/N): "
+handlerPromptScanString:
+    .string "%c"
 
 .text
     .global interuptHandler
@@ -26,6 +32,10 @@ interuptHandler:
     stp lr,  xzr, [SP, #-16]!
 
     // Print the current state
+    ldr x0, =handler_i_printString
+    mov x1, i
+    bl printf
+
     j .req x19
     mov j, #0
 handlerloop:
@@ -39,7 +49,7 @@ handlerloop:
     ldr x21, [scrs, j]
 
     #call printf
-    ldr x0, =handlerprintstring
+    ldr x0, =handlerLoopPrintString
     mov x1, j
     mov x2, x20
     mov x3, x21
@@ -50,6 +60,15 @@ handlerloop:
     b handlerloop
 
 handlerloopE:
+    ldr x0, =handlerPromptPrintString
+    bl printf
+    ldr x0, =handlerPromptScanString
+    mov x1, SP
+    add x1, x1, #8
+    bl scanf
+    ldrb x0, [SP, #8]
+    cmp x0, #'y'
+    beq earlyExit
 
     // Restore ALL registers
     ldp lr,  xzr, [SP], #16
@@ -70,3 +89,8 @@ handlerloopE:
     ldp  x0,  x1, [SP], #16
 
     ret
+
+earlyExit:
+    mov x0, #1
+    mov x8, #94
+    svc #0
