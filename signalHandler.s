@@ -5,10 +5,6 @@ handler_i_printString:
     .string "\ni:%16lx\t\t"
 handlerLoopPrintString:
     .string "%3d: value:%16lx\tscore:%d\t\t%3d: value:%16lx\tscore:%d\n"
-handlerPromptPrintString:
-    .string "Would you like to stop the program? (y/N): "
-handlerPromptScanString:
-    .string "%c"
 
 .text
     .global interuptHandler
@@ -32,16 +28,6 @@ interuptHandler:
     stp lr,  xzr, [SP, #-16]!
 
     bl handler
-
-    ldr x0, =handlerPromptPrintString
-    bl printf
-    ldr x0, =handlerPromptScanString
-    mov x1, SP
-    add x1, x1, #8
-    bl scanf
-    ldrb w0, [SP, #8]
-    cmp x0, #'y'
-    beq earlyExit
 
     // Restore ALL registers
     ldp lr,  xzr, [SP], #16
