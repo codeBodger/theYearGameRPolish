@@ -97,6 +97,7 @@ void binOpOrd1h(int n1, int n2);
 void binOpOrd0h(int n1);
 
 void interuptHandler(int sig);
+void quitHandler(int sig);
 void handler();
 
 void printTime();

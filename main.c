@@ -26,32 +26,33 @@ int main() {
     initDfact();
 
     signal(SIGINT, interuptHandler);
+    signal(SIGQUIT, quitHandler);
 
     __asm__("mov score, #2\n");
     MAINLOOP(000);
-    printf("000 done:\t\t");
+    printf("000 done:\n");
     handler();
     MAINLOOP(001);
-    printf("001 done:\t\t");
+    printf("001 done:\n");
     handler();
     MAINLOOP(010);
-    printf("010 done:\t\t");
+    printf("010 done:\n");
     handler();
     MAINLOOP(011);
-    printf("011 done:\t\t");
+    printf("011 done:\n");
     handler();
     MAINLOOP(100);
-    printf("100 done:\t\t");
+    printf("100 done:\n");
     handler();
     MAINLOOP(101);
-    printf("101 done:\t\t");
+    printf("101 done:\n");
     handler();
     MAINLOOP(110);
-    printf("110 done:\t\t");
+    printf("110 done:\n");
     handler();
     __asm__("mov score, #3\n");
     MAINLOOP(111);
-    printf("111 done:\t\t");
+    printf("111 done:\n");
     handler();
 
     // __asm__(""

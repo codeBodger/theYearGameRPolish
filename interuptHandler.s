@@ -31,11 +31,6 @@ interuptHandler:
     stp x28, x29, [SP, #-16]!
     stp lr,  xzr, [SP, #-16]!
 
-    // Print the current i
-    ldr x0, =handler_i_printString
-    mov x1, i
-    bl printf
-
     bl handler
 
     ldr x0, =handlerPromptPrintString
@@ -68,6 +63,12 @@ interuptHandler:
 
     ret
 
+    .global quitHandler
+quitHandler:
+    bl handler
+
+    // fall through to exit
+
 earlyExit:
     mov x0, #1
     mov x8, #94
@@ -92,6 +93,11 @@ handler:
     stp x26, x27, [SP, #-16]!
     stp x28, x29, [SP, #-16]!
     stp lr,  xzr, [SP, #-16]!
+
+    // Print the current i
+    ldr x0, =handler_i_printString
+    mov x1, i
+    bl printf
 
     // Print the current time
     bl printTime
