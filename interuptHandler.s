@@ -1,10 +1,10 @@
-.include "reg_rename.has"
+.include "named_registers.has"
 
 .data
 handler_i_printString:
     .string "\ni:%16lx\n"
 handlerLoopPrintString:
-    .string "%3d: value:%16lx\tscore:%d\n"
+    .string "%3d: value:%16lx\tscore:%d\t\t%3d: value:%16lx\tscore:%d\n"
 handlerPromptPrintString:
     .string "Would you like to stop the program? (y/N): "
 handlerPromptScanString:
@@ -36,23 +36,30 @@ interuptHandler:
     mov x1, i
     bl printf
 
-    j .req x19
+    j  .req x19
+    j_ .req x20
     mov j, #0
 handlerloop:
-    cmp j, #101
-    bge handlerloopE
+    cmp j, #50
+    bgt handlerloopE
 
-    // get the value and store it in x20
-    ldr x20, [vals, j, LSL #3]
+    add j_, j, #50
+    // get the values and store them in x21, x23
+    ldr x21, [vals, j,  LSL #3]
+    ldr x23, [vals, j_, LSL #3]
 
-    // get the score and store it in x21
-    ldrb w21, [scrs, j]
+    // get the scores and store them in x22, x24
+    ldrb w22, [scrs, j ]
+    ldrb w24, [scrs, j_]
 
     #call printf
     ldr x0, =handlerLoopPrintString
     mov x1, j
-    mov x2, x20
-    mov x3, x21
+    mov x2, x21
+    mov x3, x22
+    mov x4, j_
+    mov x5, x23
+    mov x6, x24
     bl printf
 
     add j, j, #1
