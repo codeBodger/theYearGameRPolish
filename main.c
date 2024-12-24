@@ -30,29 +30,29 @@ int main() {
 
     __asm__("mov score, #2\n");
     MAINLOOP(000);
-    printf("000 done:\n");
+    printf("000 done:");
     handler();
     MAINLOOP(001);
-    printf("001 done:\n");
+    printf("001 done:");
     handler();
     MAINLOOP(010);
-    printf("010 done:\n");
+    printf("010 done:");
     handler();
     MAINLOOP(011);
-    printf("011 done:\n");
+    printf("011 done:");
     handler();
     MAINLOOP(100);
-    printf("100 done:\n");
+    printf("100 done:");
     handler();
     MAINLOOP(101);
-    printf("101 done:\n");
+    printf("101 done:");
     handler();
     MAINLOOP(110);
-    printf("110 done:\n");
+    printf("110 done:");
     handler();
     __asm__("mov score, #3\n");
     MAINLOOP(111);
-    printf("111 done:\n");
+    printf("111 done:");
     handler();
 
     // __asm__(""
