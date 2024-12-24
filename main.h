@@ -1,5 +1,7 @@
 #include <stdint.h>
 #include <signal.h>
+#include <time.h>
+#include <stdio.h>
 
 #include "funcs.h"
 
@@ -95,3 +97,5 @@ void binOpOrd1h(int n1, int n2);
 void binOpOrd0h(int n1);
 
 void interuptHandler(int sig);
+
+void printTime();

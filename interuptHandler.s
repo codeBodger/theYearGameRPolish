@@ -2,7 +2,7 @@
 
 .data
 handler_i_printString:
-    .string "\ni:%16lx\n"
+    .string "\ni:%16lx\t\t"
 handlerLoopPrintString:
     .string "%3d: value:%16lx\tscore:%d\t\t%3d: value:%16lx\tscore:%d\n"
 handlerPromptPrintString:
@@ -31,11 +31,15 @@ interuptHandler:
     stp x28, x29, [SP, #-16]!
     stp lr,  xzr, [SP, #-16]!
 
-    // Print the current state
+    // Print the current i
     ldr x0, =handler_i_printString
     mov x1, i
     bl printf
 
+    // Print the current time
+    bl printTime
+
+    // Print the current state
     j  .req x19
     j_ .req x20
     mov j, #0
