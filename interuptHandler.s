@@ -46,7 +46,7 @@ handlerloop:
     ldr x20, [vals, j, LSL #3]
 
     // get the score and store it in x21
-    ldr x21, [scrs, j]
+    ldrb w21, [scrs, j]
 
     #call printf
     ldr x0, =handlerLoopPrintString

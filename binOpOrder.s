@@ -85,12 +85,12 @@ sign_0_end\@:
     cmp r0i, #100
     bgt \onIrrelevant
 // check if better score
-    ldr t0i, [scrs, r0l]
+    ldrb t0i, [scrs, r0l]
     cmp score, t0i
     ble \onIrrelevant
 // finally, we know it's better!
     str i, [vals, r0l, LSL #3]
-    str score, [scrs, r0l]
+    strb score, [scrs, r0l]
 .endm
 
 .macro UPDATE_MAXSHFT
