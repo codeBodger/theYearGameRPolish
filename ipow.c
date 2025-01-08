@@ -2,7 +2,7 @@
 int ipow(register int base, register int exp) {
     __asm__("// remmember to add abs");
 
-    static const uint8_t highest_bit_set[] = {
+    static const char highest_bit_set[] = {
         0, 1, 2, 2, 3, 3, 3, 3,
         4, 4, 4, 4, 4, 4, 4, 4,
         5, 5, 5, 5, 5, 5, 5, 5,
