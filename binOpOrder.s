@@ -25,7 +25,12 @@ getb_jt\@:
     b getb_0check\@
 
     // case 3:
-    sdiv r0i, p0i, p1i
+    sdiv t0i, p0i, p1i
+    mul t1i, t0i, p1i
+    cmp t1i, p0i
+    // bad result
+    bne \on0ret
+    mov r0i, t1i
     // fall through to getb_0check\@
 
 getb_0check\@:
