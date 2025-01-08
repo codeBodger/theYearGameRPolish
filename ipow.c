@@ -1,5 +1,5 @@
 // Modified from https://gist.github.com/orlp/3551590
-int32_t ipow(register int32_t base, register int32_t exp) {
+int ipow(register int base, register int exp) {
     __asm__("// remmember to add abs");
 
     static const uint8_t highest_bit_set[] = {
@@ -9,7 +9,7 @@ int32_t ipow(register int32_t base, register int32_t exp) {
         5, 5, 5, 5, 5, 5, 5 // anything past 31 is a guaranteed overflow with base > 1
     };
 
-    register int64_t result = 1;
+    register int result = 1;
 
     switch (highest_bit_set[exp]) {
         case 6:
